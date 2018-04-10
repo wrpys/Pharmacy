@@ -86,6 +86,7 @@ public class DingdanDao {
 				//执行修改
 				sql ="update dingdan "
 						+ "set dingdanBianhao= '"+dingdan.getDingdanBianhao()+
+						"',yaopingID='"+dingdan.getYaopingID()+
 						"',danjia='"+dingdan.getDanjia()+
 						"',shuliang='"+dingdan.getShuliang()+
 						"',zongjia='"+dingdan.getZongjia()+

@@ -76,25 +76,11 @@
 							<b class="arrow"></b>
 						</li>
 						<li class="">
-							<a class="popstyle user-add" href="caigoudingdangbaocun.jsp" target="_blank"> 
+							<a class="popstyle user-add" href="caigoushouhuo.jsp" target="_blank"> 
 								<i class="menu-icon fa fa-caret-right"></i> 采购收货
 							</a> 
 							<b class="arrow"></b>
 						</li>
-						<li class="">
-							<a class="popstyle user-add" href="caigoudingdangbaocun.jsp" target="_blank"> 
-								<i class="menu-icon fa fa-caret-right"></i> 新增采购订货单
-							</a> 
-							<b class="arrow"></b>
-						</li>
-						<li class=""><a class="popstyle" href="caigoufahuobaocun.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								新增 采购收货单
-						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="caigoufahuo.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								采购收货单
-						</a> <b class="arrow"></b></li>
 					</ul></li>
 
 				<li class=""><a href="#" class="dropdown-toggle"> <i

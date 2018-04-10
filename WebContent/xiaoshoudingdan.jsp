@@ -28,7 +28,7 @@
                         <thead>
                         <tr role="row">
 							<th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
-      	   		订单编号
+      	   		采购订单编号
                             </th>
                            <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
     	      	药品编号
@@ -240,7 +240,7 @@ $(function () {
                          return "<span class='label label-sm label-success'>审核</span>";
                      }else if (status == '0') {
                          return "<span class='label label-sm label-success'>未审核</span>";
-                     }
+                     } 
              }
              }});
          $('#userList').html(rendered);
@@ -288,7 +288,7 @@ $(function () {
             	height: 450,
             	width: 450,
                 modal: true,
-                title: "修改采购订单",
+                title: "新增采购订单",
                 open: function (event, ui) {
                 	gongyingshangSelect();
                 	yaopingSelect();

@@ -9,20 +9,19 @@
 
 <div class="page-header">
     <h1>
-        采购订单管理
+        采购收货订单管理
     </h1>
 </div>
 <div class="main-content-inner">
         <div class="col-xs-12">
             <div class="table-header">
-               采购订单列表&nbsp;&nbsp;
+               采购收货订单列表&nbsp;&nbsp;
                 <a class="green" href="#">
                     <i class="ace-icon fa fa-plus-circle orange bigger-130 user-add"></i>
                 </a>
             </div>
             <div>
                 <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-
                     <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid"
                            aria-describedby="dynamic-table_info" style="font-size:14px">
                         <thead>
@@ -68,16 +67,15 @@
                 </div>
             </div>
         </div>
-    
 </div>
 
 <div id="dialog-saveuser-form" style="display: none;">
     <form id="saveuserForm">
         <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
         	<tr>
-                <td><label for="dingdanBianhao">采购订单编号</label></td>
+                <td><label for="dingdanBianhao">采购收货订单编号</label></td>
                 <td><input type="text" name="dingdanBianhao" id="dingdanBianhao" value="" class="text ui-widget-content ui-corner-all"></td>
-                <input type="hidden" name="cls" id="cls" value="CaigoudingdanController"/>
+                <input type="hidden" name="cls" id="cls" value="CaigoushouhuoController"/>
                 <input type="hidden" name="mtd" id="mtd" value="save"/>
             </tr>
             <tr>
@@ -113,8 +111,8 @@
     <form id="updateuserForm">
         <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
              <tr>
-                <td><label for="dingdanBianhao">采购订单编号</label></td>
-                <input type="hidden" name="cls" id="cls" value="CaigoudingdanController"/>
+                <td><label for="dingdanBianhao">采购收货订单编号</label></td>
+                <input type="hidden" name="cls" id="cls" value="CaigoushouhuoController"/>
                 <input type="hidden" name="mtd" id="mtd" value="update"/>
 				<input type="hidden" name="dingdanID" id="dingdanID"/>
                 <td><input type="text" name="dingdanBianhao" id="dialog-updateuser-formDingdanBianhao" value="" class="text ui-widget-content ui-corner-all"></td>
@@ -224,7 +222,7 @@ $(function () {
         var url = "${pageContext.request.contextPath }/cs";
         $.ajax({
         	url: url,
-        	data:{cls:'CaigoudingdanController',mtd:'findAll'},            
+        	data:{cls:'CaigoushouhuoController',mtd:'findAll'},            
             success: function (result) {            	
                 renderUserListAndPage(result);
             }
@@ -237,9 +235,9 @@ $(function () {
                  return function (text, render) {
                      var status = render(text); // 获取出渲染后的值
                      if (status == '1') {
-                         return "<span class='label label-sm label-success'>审核</span>";
-                     }else if (status == '0') {
-                         return "<span class='label label-sm label-success'>未审核</span>";
+                         return "<span class='label label-sm label-success'>结算</span>";
+                     } else if (status == '0') {
+                         return "<span class='label label-sm label-success'>未结算</span>";
                      }
              }
              }});
@@ -252,7 +250,7 @@ $(function () {
         	height: 450,
         	width: 450,
             modal: true,
-            title: "新增采购订单",
+            title: "新增采购收货订单",
             open: function (event, ui) {
                 $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮
                 gongyingshangSelect();
@@ -288,7 +286,7 @@ $(function () {
             	height: 450,
             	width: 450,
                 modal: true,
-                title: "修改采购订单",
+                title: "修改采购收货订单",
                 open: function (event, ui) {
                 	gongyingshangSelect();
                 	yaopingSelect();
@@ -323,7 +321,7 @@ $(function () {
                 $.ajax({
                     url: "${pageContext.request.contextPath }/cs",
                     data: {
-                    	cls:'CaigoudingdanController',mtd:'delete',
+                    	cls:'CaigoushouhuoController',mtd:'delete',
                     	dingdanID: dingdanID
                     },
                     success: function () {

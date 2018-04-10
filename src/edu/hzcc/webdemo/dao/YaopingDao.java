@@ -73,7 +73,7 @@ public class YaopingDao {
 		try {
 			String sql = null;
 			//执行修改
-			sql ="update yaoping set yaopingBianhao= '" + yaoping.getYaopingBianhao() + "' yaopingMingzi= '"+yaoping.getYaopingMingzi()+"',yaopingDanwei='"+yaoping.getYaopingDanwei()
+			sql ="update yaoping set yaopingBianhao= '" + yaoping.getYaopingBianhao() + "', yaopingMingzi= '"+yaoping.getYaopingMingzi()+"',yaopingDanwei='"+yaoping.getYaopingDanwei()
 			+"',youxiaoqi='"+yaoping.getYouxiaoqi()+"',jingjia= '"+yaoping.getJingjia()+"',gongyingshangMingzi='"+yaoping.getGongyingshangMingzi()+"',shuliang='"+yaoping.getShuliang()+"' where yaopingID= '"+yaoping.getYaopingID()+"'";
 			System.out.print(sql);
 			Connection connection = ProjectShare.getDbPool().getConnection();
