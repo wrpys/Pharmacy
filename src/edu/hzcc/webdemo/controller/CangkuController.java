@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sf.json.JSONObject;
 import edu.hzcc.webdemo.dao.CangkuDao;
+import edu.hzcc.webdemo.dao.YonghuDao;
 import edu.hzcc.webdemo.pojo.Cangku;
 import edu.hzcc.webdemo.util.ControllerBase;
 
@@ -28,7 +29,7 @@ public class CangkuController extends ControllerBase {
 		writeJson(jsonObject.toString());
 		return;
 	}
-
+	
 	public void delete() {
 		int id = getParameterInt("cangkuID");
 		CangkuDao.delete(id);

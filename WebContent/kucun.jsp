@@ -21,9 +21,9 @@
         <div class="col-xs-12">
             <div class="table-header">
                 出入库列表&nbsp;&nbsp;
-                <a class="green" href="#">
+                <!-- <a class="green" href="#">
                     <i class="ace-icon fa fa-plus-circle orange bigger-130 user-add"></i>
-                </a>
+                </a> -->
             </div>
             <div>
                 <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
@@ -51,7 +51,9 @@
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
                                 状态
                             </th>
-                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label=""></th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">
+                               操作
+                            </th>
                         </tr>
                         </thead>
                         <tbody id="userList"></tbody>
@@ -68,41 +70,37 @@
     <form id="userupdateForm">
         <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
             <tr>
-                <td style="width: 80px;"><label for="duties">出/入库</label></td>
-                <td>
-                    <select id="deptSelectId" name="state" data-placeholder="选择" style="width: 200px;">
-                    	<option value="1">入库</option>
-                    	<option value="2">出库</option>
-                    </select>
-                </td>
+                <td><label for="churuku">出/入库</label></td>
+                <td><input type="text" name="churuku" id="churuku" readonly="true" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
+            
             <tr>
-                <td><label for="yaopingID"> 药品编号</label></td>
-                <input type="hidden" name="kucunID" id="kucunID"/>
+                <td><label for="cangkuMingzi">仓库名字</label></td>
                 <input type="hidden" name="cls" id="cls" value="KucunController"/>
                 <input type="hidden" name="mtd" id="mtd" value="update"/>
-                <td><input type="text" name="yaopingID" id="dialog-userupdate-formyaopingID" value="" class="text ui-widget-content ui-corner-all"></td>
+                <input type="hidden" name="cangkuID" id="cangkuID"/>
+                <input type="hidden" name="kucunID" id="kucunID"/>
+                <input type="hidden" name="dingdanID" id="dingdanID"/>
+                <td><input type="text" name="cangkuMingzi" id="cangkuMingzi" readonly="true" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
          
             <tr>
                 <td><label for="yaopingMingzi">药品名字</label></td>
-                <td><input type="text" name="yaopingMingzi" id="dialog-userupdate-formyaopingMingzi" value="" class="text ui-widget-content ui-corner-all"></td>
+                <input type="hidden" name="yaopingID" id="updateYaopingID"/>
+                <td><input type="text" name="yaopingMingzi" readonly="true" id="dialog-userupdate-formyaopingMingzi" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
             <tr>
                 <td><label for="yaopingDanwei">药品单位</label></td>
-                <td><textarea name="yaopingDanwei" id="dialog-userupdate-formyaopingDanwei" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
+                <td><input name="yaopingDanwei" id="dialog-userupdate-formyaopingDanwei" readonly="true"  class="text ui-widget-content ui-corner-all" rows="3" cols="25"></input></td>
             </tr>
                <tr>
                 <td><label for="shuliang">数量</label></td>
-                <td><textarea name="shuliang" id="dialog-userupdate-formshuliang" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
-            </tr>
-               <tr>
-                <td><label for="riqi">日期</label></td>
-                <td><textarea name="riqi" id="dialog-userupriqi-formdate" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
-            </tr>
+                <td><input name="shuliang" id="dialog-userupdate-formshuliang" readonly="true"  class="text ui-widget-content ui-corner-all" rows="3" cols="25"></input></td>
         </table>
     </form>
 </div>
+
+
 <div id="dialog-usersave-form" style="display: none;">
     <form id="userForm">
        <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
@@ -147,24 +145,26 @@
 {{#userList}}
 <tr role="row" class="user-name odd" data-id="{{kucunID}}"><!--even -->
     <td>{{yaopingID}}</a></td>
-    <td>{{yaopingMingzi}}</td>
-    <td>{{yaopingDanwei}}</td>
+    <td>{{yaoping.yaopingMingzi}}</td>
+    <td>{{yaoping.yaopingDanwei}}</td>
     <td>{{shuliang}}</td>
 	<td>{{riqi}}</td>
-	<td>{{#bold}}{{state}}{{/bold}}</td> <!-- 此处套用函数对status做特殊处理 -->
+	<td>{{complete}}</td>
     <td>
         <div class="hidden-sm hidden-xs action-buttons">
-            <a class="green user-edit" href="#" data-id="{{kucunID}}" 
-												data-yaopingID="{{yaopingID}}"
- 												data-yaopingMingzi="{{yaopingMingzi}}"
- 												data-yaopingDanwei="{{yaopingDanwei}}"
+            <a class="green user-edit" href="#" data-yaopingID="{{yaopingID}}"
+ 												data-yaopingMingzi="{{yaoping.yaopingMingzi}}"
+ 												data-yaopingDanwei="{{yaoping.yaopingDanwei}}"
  												data-shuliang="{{shuliang}}"
- 												data-riqi="{{riqi}}">
+ 												data-riqi="{{riqi}}"
+												data-complete="{{complete}}"
+												data-cangkuMingzi="{{cangku.cangkuMingzi}}"
+												data-cangkuID="{{cangku.cangkuID}}"
+												data-dingdanID="{{dingdanID}}"
+												data-kucunID="{{kucun.kucunID}}"
+												data-dingdanleixing="{{dingdanleixing}}">
                 <i class="ace-icon fa fa-pencil bigger-100"></i>
             </a>
-             <a class="red user-delete" href="#" data-id="{{kucunID}}">
-                    <i class="ace-icon fa fa-trash-o bigger-100"></i>
-             </a>
         </div>
     </td>
 </tr>
@@ -209,7 +209,7 @@ $(function () {
         	data:{cls:'KucunController',mtd:'findAll'},
             
             success: function (result) {
-            	
+            	console.log(result);
                 renderUserListAndPage(result);
             }
         });
@@ -218,7 +218,7 @@ $(function () {
     function renderUserListAndPage(result) {            
             	
                 var rendered = Mustache.render(userListTemplate, {
-                    "userList": result.kucunList,
+                    "userList": result.dingdanList,
                   //就是在入库和出库那  变成绿色的
                     "bold": function () { // 对展示做特殊处理
                         return function (text, render) {
@@ -237,14 +237,15 @@ $(function () {
                 bindUserClick()
             } 
          
-    
-
-
     // 绑定相关点击事件
     function bindUserClick() {    	
         // 处理点击按钮
         $(".user-edit").click(function (e) {
-            var kucunID = $(this).attr("data-id");
+        	var churuku = $(this).attr("dingdanleixing")==2?"入库":"出库";
+            var cangkuMingzi = $(this).attr("data-cangkuMingzi");
+            var cangkuID = $(this).attr("data-cangkuID");
+            var kucunID = $(this).attr("data-kucunID");
+            var dingdanID = $(this).attr("data-dingdanID");
             var yaopingID = $(this).attr("data-yaopingID");
             var yaopingDanwei = $(this).attr("data-yaopingDanwei");
             var shuliang = $(this).attr("data-shuliang");
@@ -255,17 +256,24 @@ $(function () {
                 title: "编辑出/入库",
                 open: function (event, ui) {
                     $("#userupdateForm")[0].reset();
-                    $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮                 
-                    $("#kucunID").val(kucunID);
-                    $("#dialog-userupdate-formyaopingID").val(yaopingID);
+                    $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮      
+                    $("#churuku").val(churuku);
+                    $("#cangkuMingzi").val(cangkuMingzi);
+                    $("#yaopingID").val(yaopingID);
                     $("#dialog-userupdate-formyaopingDanwei").val(yaopingDanwei);    
                     $("#dialog-userupdate-formshuliang").val(shuliang);    
                     $("#dialog-userupdate-formyaopingMingzi").val(yaopingMingzi);   
                     $("#dialog-userupdate-formriqi").val(riqi);    
+                    
+                    $("#updateYaopingID").val(yaopingID);    
+                    $("#cangkuID").val(cangkuID);    
+                    $("#dingdanID").val(dingdanID);    
+                    $("#kucunID").val(kucunID);    
                 },
                 buttons: {
-                    "更新": function (e) {
-                    	 update();
+                    "确认": function (e) {
+                    	update();
+                    	alert("操作成功！")
                     },
                     "取消": function () {
                         $("#dialog-userupdate-form").dialog("close");
@@ -298,7 +306,6 @@ $(function () {
     }
 
     function save() {
-    	alert("save");
         $.ajax({
             url: "${pageContext.request.contextPath }/cs",
             data: $("#userForm").serializeArray(),
@@ -311,7 +318,6 @@ $(function () {
     }
     
     function update() {
-    	alert("update");
         $.ajax({
             url: "${pageContext.request.contextPath }/cs",
             data: $("#userupdateForm").serializeArray(),

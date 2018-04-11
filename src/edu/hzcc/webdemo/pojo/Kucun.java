@@ -11,21 +11,19 @@ public class Kucun {
 	 */
 	private int yaopingID;
 	/*
-	 * 药品名字
-	 */
-	private String yaopingMingzi;
-	/**
-	 * 订单号
-	 */
-	private int dingdanhao;
-	/*
-	 * 药品单位
-	 */
-	private String yaopingDanwei;
-	/*
 	 * 入出库数量
 	 */
 	private int shuliang;
+	
+	/**
+	 * 仓库ID
+	 */
+	private int cangKuID;
+	
+	/**
+	 * 订单ID
+	 */
+	private int dingdanID;
 	
 	private String riqi;
 	/*
@@ -46,24 +44,6 @@ public class Kucun {
 	public void setYaopingID(int yaopingID) {
 		this.yaopingID = yaopingID;
 	}
-	public String getYaopingMingzi() {
-		return yaopingMingzi;
-	}
-	public void setYaopingMingzi(String yaopingMingzi) {
-		this.yaopingMingzi = yaopingMingzi;
-	}
-	public int getDingdanhao() {
-		return dingdanhao;
-	}
-	public void setDingdanhao(int dingdanhao) {
-		this.dingdanhao = dingdanhao;
-	}
-	public String getYaopingDanwei() {
-		return yaopingDanwei;
-	}
-	public void setYaopingDanwei(String yaopingDanwei) {
-		this.yaopingDanwei = yaopingDanwei;
-	}
 	public int getShuliang() {
 		return shuliang;
 	}
@@ -82,11 +62,24 @@ public class Kucun {
 	public void setZhuangtai(int zhuangtai) {
 		this.zhuangtai = zhuangtai;
 	}
+
+	public int getCangKuID() {
+		return cangKuID;
+	}
+	
+	public void setCangKuID(int cangKuID) {
+		this.cangKuID = cangKuID;
+	}
+	public int getDingdanID() {
+		return dingdanID;
+	}
+	public void setDingdanID(int dingdanID) {
+		this.dingdanID = dingdanID;
+	}
 	@Override
 	public String toString() {
-		return "Kucun [kucunID=" + kucunID + ", yaopingID=" + yaopingID + ", yaopingMingzi=" + yaopingMingzi
-				+ ", dingdanhao=" + dingdanhao + ", yaopingDanwei=" + yaopingDanwei + ", shuliang=" + shuliang
-				+ ", riqi=" + riqi + ", zhuangtai=" + zhuangtai + "]";
+		return "Kucun [kucunID=" + kucunID + ", yaopingID=" + yaopingID + ", yaopingMingzi=" + ", shuliang=" + shuliang
+				+ ", riqi=" + riqi + ", zhuangtai=" + zhuangtai + ", cangKuID=" + cangKuID + ", dingdanID=" + dingdanID +"]";
 	}
 	
 	

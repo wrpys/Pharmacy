@@ -66,7 +66,7 @@
 			<tr>
                 <td><label for="yaopingID">药品编号</label></td>
                  <input type="hidden" name="cls" id="cls" value="CangkusheziController"/>
-                <input type="hidden" name="mtd" id="mtd" value="save"/>
+                	<input type="hidden" name="mtd" id="mtd" value="save"/>
                 <td><input type="text" name="yaopingID" id="yaopingID" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
 
@@ -226,12 +226,12 @@ $(function () {
             });
         });
 
-		            // 处理点击[删除部门]按钮
+        // 处理点击[删除部门]按钮
         $(".user-delete").click(function (e) {
             e.preventDefault();
             e.stopPropagation(); // 此处必须要取消冒泡,因为是个递归结构,冒泡的话会让一个点击被响应多个
             var Cangkusheziid = $(this).attr("data-id");
-            if (confirm("确定要删除[" + orderGoodID + "]吗?")) {
+            if (confirm("确定要删除[" + Cangkusheziid + "]吗?")) {
                 $.ajax({
                     url: "${pageContext.request.contextPath }/cs",
                     data: {
@@ -239,7 +239,6 @@ $(function () {
                     	id: Cangkusheziid
                     },
                     success: function () {
-                        
                             showMessage("删除[" + Cangkusheziid + "]", "操作成功", true);
                             loadUserList();
                         
@@ -250,23 +249,21 @@ $(function () {
     }
 
     function save() {
-    	alert("save");
         $.ajax({
             url: "${pageContext.request.contextPath }/cs",
             data: $("#saveuserForm").serializeArray(),
             type: 'POST',
             success: function () {
-            	
             	   $("#dialog-saveuser-form").dialog("close");
+            	   alert("保存成功!");
             	   loadUserList();
-                    
              
             }
         });
     }
     
     function update() {
-    	alert("update");
+    	
         $.ajax({
             url: "${pageContext.request.contextPath }/cs",
             data: $("#updateuserForm").serializeArray(),
@@ -274,6 +271,7 @@ $(function () {
             success: function () {
             	
             	   $("#dialog-updateuser-form").dialog("close");
+            	   alert("更新成功!");
             	   loadUserList();
                     
              

@@ -13,6 +13,20 @@ import edu.hzcc.webdemo.sys.ProjectShare;
  */
 public class CangkusheziDao {
 	
+	
+	private static Cangkushezi converkucunshezi(ResultSet rs) throws Exception{
+		Cangkushezi cangkushezi= new Cangkushezi();
+		cangkushezi.setCangkuID(rs.getInt("cangkuID"));
+		cangkushezi.setId(rs.getInt("id"));
+		cangkushezi.setZuishaoshuliang(rs.getInt("zuishaoshuliang"));
+		cangkushezi.setYaopingID(rs.getInt("yaopingID"));
+		// 药品详情
+		if(cangkushezi.getYaopingID() != null) {
+			cangkushezi.setYaoping(YaopingDao.findByYaopingID(cangkushezi.getYaopingID()));
+		}
+		return cangkushezi;
+	}
+	
 	public static boolean save(Cangkushezi Cangkushezi){
 		try {
 			String sql = null;
@@ -71,15 +85,8 @@ public class CangkusheziDao {
 			String sql = "select * from cangkushezi";
 			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
 			while(rs.next()){
-				Cangkushezi  Cangkushezi = new Cangkushezi();
-				Cangkushezi.setCangkuID(rs.getInt("cangkuID"));
-				Cangkushezi.setYaopingID(rs.getInt("yaopingID"));
-				Cangkushezi.setId(rs.getInt("id"));
-				Cangkushezi.setZuishaoshuliang(rs.getInt("zuishaoshuliang"));
-				if(Cangkushezi.getCangkuID()>0) {
-					Cangkushezi.setCangkuMingzi(CangkuDao.findBycangkuID(Cangkushezi.getCangkuID()).getCangkuMingzi());
-				}
-				list.add(Cangkushezi);
+				Cangkushezi cangkushezi = converkucunshezi(rs);
+				list.add(cangkushezi);
 				
 			}
 			rs.close();

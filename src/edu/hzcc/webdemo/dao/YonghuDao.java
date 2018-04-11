@@ -24,7 +24,6 @@ public class YonghuDao {
 		return yonghu;
 	}
 	
-	// 保存用户
 	public static boolean save(Yonghu yonghu){
 		try {
 			String sql = null;
@@ -56,7 +55,6 @@ public class YonghuDao {
 		}
 	}
 
-	// 删除用户
 	public static boolean delete(int yonghuID){
 		try {
 			Connection connection = ProjectShare.getDbPool().getConnection();
@@ -75,7 +73,6 @@ public class YonghuDao {
 		}
 	}
 
-	// 查找所有
 	public static List<Yonghu> findALL(){
 		try {
 			List<Yonghu> list = new ArrayList<>();
@@ -105,8 +102,8 @@ public class YonghuDao {
  * @param yonghuID
  * @return 该ID的用户明细
  */
-	//干什么用的，被谁调用，返回到哪里？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-	//	被rizhidao调用，返回到rizhidao，因为rizhi这张表只有yonghuID，用yonghuID来找到yonghu这个类，得出名字
+//干什么用的，被谁调用，返回到哪里？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+//	被rizhidao调用，返回到rizhidao，因为rizhi这张表只有yonghuID，用yonghuID来找到yonghu这个类，得出名字
 	public static Yonghu findByYonghuID(int yonghuID){
 		Yonghu yonghu = null;
 		try {

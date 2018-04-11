@@ -6,51 +6,75 @@ package edu.hzcc.webdemo.pojo;
 public class Cangkushezi {
 
 	
-	private int id;
+	private Integer id;
 	//仓库ID
-	private int cangkuID;
+	private Integer cangkuID;
 	//药品编号
-	private int yaopingID;
+	private Integer yaopingID;
 	
 	//最少数量
-	private int zuishaoshuliang;
-	/*
-	 * 数据库没有这个字段，为了表格显示
-	 */
-	private String cangkuMingzi;
-	public int getId() {
+	private Integer zuishaoshuliang;
+	
+	private Yaoping yaoping;
+	
+	private Dingdan dingdan;
+	
+	private Kucun kucun;
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getCangkuID() {
+
+	public Integer getCangkuID() {
 		return cangkuID;
 	}
-	public void setCangkuID(int cangkuID) {
+
+	public void setCangkuID(Integer cangkuID) {
 		this.cangkuID = cangkuID;
 	}
-	public int getYaopingID() {
+
+	public Integer getYaopingID() {
 		return yaopingID;
 	}
-	public void setYaopingID(int yaopingID) {
+
+	public void setYaopingID(Integer yaopingID) {
 		this.yaopingID = yaopingID;
 	}
-	public int getZuishaoshuliang() {
+
+	public Integer getZuishaoshuliang() {
 		return zuishaoshuliang;
 	}
-	public void setZuishaoshuliang(int zuishaoshuliang) {
+
+	public void setZuishaoshuliang(Integer zuishaoshuliang) {
 		this.zuishaoshuliang = zuishaoshuliang;
 	}
-	public String getCangkuMingzi() {
-		return cangkuMingzi;
+
+	public Yaoping getYaoping() {
+		return yaoping;
 	}
-	public void setCangkuMingzi(String cangkuMingzi) {
-		this.cangkuMingzi = cangkuMingzi;
+
+	public void setYaoping(Yaoping yaoping) {
+		this.yaoping = yaoping;
 	}
-	
-	
-	
-	
+
+	public Dingdan getDingdan() {
+		return dingdan;
+	}
+
+	public void setDingdan(Dingdan dingdan) {
+		this.dingdan = dingdan;
+	}
+
+	public Kucun getKucun() {
+		return kucun;
+	}
+
+	public void setKucun(Kucun kucun) {
+		this.kucun = kucun;
+	}
 	
 }

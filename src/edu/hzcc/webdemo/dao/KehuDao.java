@@ -30,7 +30,8 @@ public class KehuDao {
 		//把数据库查到的数据填充到Kehu这个对象中　返回给谁了使用Kehu这个对象的方法，
 	}
 	/**
-	 * 保存/更新 当客户ID已经存在，说明记录在表中存在就应该执行更新
+	 * 保存/更新
+	
 	 */
 	public static boolean save(Kehu kehu){
 		try {
@@ -68,7 +69,6 @@ public class KehuDao {
 		}
 	}
 
-	// 删除
 	public static boolean delete(int kehuID){
 		try {
 			//开启数据库链接
@@ -91,7 +91,7 @@ public class KehuDao {
 		}
 	}
 	
-	// 查找所有
+	
 	public static List<Kehu> findALL(){
 		try {
 			List<Kehu> list = new ArrayList<>();
@@ -124,8 +124,7 @@ public class KehuDao {
 	}
 	
 	//什么意思啊，方法被谁调用了，kehuControler中没有这个方法？？？？？？？？？？？
-	//xiaoshoudingdan和xiaoshoufahuo表只有kehuID，没有客户名字，用来获取用户名字的，返回到xiaoshoudingdanDao和xiaoshoufahuoDao，用在表格显示客户名字
-	//订单列表，需要展示客户，所以到这边查找
+//xiaoshoudingdan和xiaoshoufahuo表只有kehuID，没有客户名字，用来获取用户名字的，返回到xiaoshoudingdanDao和xiaoshoufahuoDao，用在表格显示客户名字
 	public static Kehu findBykehuID(int kehuID){
 		Kehu kehu=null;
 		try {

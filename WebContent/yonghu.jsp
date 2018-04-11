@@ -141,7 +141,7 @@
 <script id="yonghuListTemplate" type="x-tmpl-mustache">
 {{#yonghuList}}
 <tr role="row" class="yonghu-name odd" data-id="{{yonghuID}}"><!--even -->
-    <td>{{yonghuMingzi}}</td>
+    <td><a href="#" class="yonghu-edit" data-id="{{yonghuID}}">{{yonghuMingzi}}</a></td>
 	<td>{{#bold}}{{zhiwu}}{{/bold}}</td> <!-- 此处套用函数对status做特殊处理 -->
     <td>{{shouji}}</td>
     <td>{{dengluMingzi}}</td>

@@ -7,6 +7,8 @@ import edu.hzcc.webdemo.util.DBCPool;
 
 /**
  * 针对本项目共享的一些静态内容
+ * @author vboxwin7
+ *
  */
 public class ProjectShare {
 	
