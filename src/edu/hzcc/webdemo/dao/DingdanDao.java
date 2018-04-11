@@ -120,6 +120,36 @@ public class DingdanDao {
 		}
 	}
 	
+	public static boolean updateComplete(Dingdan dingdan){
+		try {
+			String sql = null;
+				//执行修改
+				sql ="update dingdan "
+						+ "set complete= '"+dingdan.getComplete()+
+						"' where dingdanID="+dingdan.getDingdanID();
+			System.out.print(sql);
+			//开启数据库链接
+			Connection connection = ProjectShare.getDbPool().getConnection();
+			//开启数据库事物
+			ProjectShare.getDbPool().transaction(connection, true);
+			//数据库更新
+			ProjectShare.getDbPool().update(connection, sql);
+			//提交操作
+			ProjectShare.getDbPool().commit(connection);
+			//事物关闭
+			ProjectShare.getDbPool().transaction(connection, false);
+			//链接关闭
+			ProjectShare.getDbPool().closeConnection(connection);
+			
+			return true;
+			//异常
+		} catch (Exception e) {
+			// TODO: handle exception
+			ProjectShare.log("dingdan.save/update error: "+e.getMessage());
+			return false;
+		}
+	}
+	
 	public static boolean delete(int dingdanID){
 		try {
 			//开启数据库链接
