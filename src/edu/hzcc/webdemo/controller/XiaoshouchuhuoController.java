@@ -11,30 +11,30 @@ import edu.hzcc.webdemo.pojo.Dingdan;
 import edu.hzcc.webdemo.util.ControllerBase;
 /**
 
- * 采购订单汇总的交互，页面根据cls:'caigoudingdanController',mtd:'findAll'来调用
+ * 销售订单汇总的交互，页面根据cls:'XiaoshouchuhuoController',mtd:'findAll'来调用
  * 结果返回页面
  */
-public class CaigoudingdanController extends ControllerBase{
+public class XiaoshouchuhuoController extends ControllerBase{
 
 	public void findAll(){
-		System.out.println("CaigoudingdanController.findALL()");
+		System.out.println("XiaoshouchuhuoController.findALL()");
 		//定义一个空的caigoudingdan列表
 		List<Dingdan> caigoudingdanList=new ArrayList<>();
-		//在DingdanDao中数据库操作 找出所有的caigoudingdanlist列表
+		//在caigoudingdanDao中数据库操作 找出所有的caigoudingdanlist列表
 		Dingdan dingdan = new Dingdan();
-		dingdan.setDingdanleixing(1);
+		dingdan.setDingdanleixing(4);
 		caigoudingdanList=DingdanDao.findALL(dingdan);
 		//定义一个json格式
 		JSONObject jsonObject = new JSONObject();
 		//把caigoudingdanlist列表填入json
 		jsonObject.put("caigoudingdanList", caigoudingdanList);
-		//原路返回caigoudingdanlist列表，用writeJson返回Json数据名字为caigoudingdanlist
+		//原路返回caigoudingdanlist列表，用writeJson返回Json数据名字为caigoudingdanglist
 		writeJson(jsonObject.toString());
 		return;
 	}
 
 	public void delete(){
-		System.out.println("CaigoudingdanController.delete()");
+		System.out.println("XiaoshouchuhuoController.delete()");
 		//getParameterInt收到页面提交的dingdanID--->要和data中的dingdanID一样
 		int dingdanID = getParameterInt("dingdanID");
 		//在DingdanDao中数据库操作 删除一个订单
@@ -52,10 +52,10 @@ public class CaigoudingdanController extends ControllerBase{
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		caigoudingdan.setRiqi(sdf.format(date));
-		caigoudingdan.setGongyingshangID(getParameterInt("gongyingshangID"));
+		caigoudingdan.setGongyingshangID(0);
 		caigoudingdan.setCangkuID(getParameterInt("cangkuID"));
-		caigoudingdan.setDingdanleixing(1);
-		caigoudingdan.setKehuID(0);
+		caigoudingdan.setDingdanleixing(4);
+		caigoudingdan.setKehuID(getParameterInt("kehuID"));
 		caigoudingdan.setComplete(0);
 		DingdanDao.save(caigoudingdan);
 	}
@@ -71,10 +71,10 @@ public class CaigoudingdanController extends ControllerBase{
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		caigoudingdan.setRiqi(sdf.format(date));
-		caigoudingdan.setGongyingshangID(getParameterInt("gongyingshangID"));
+		caigoudingdan.setGongyingshangID(0);
 		caigoudingdan.setCangkuID(getParameterInt("cangkuID"));
-		caigoudingdan.setDingdanleixing(1);
-		caigoudingdan.setKehuID(0);
+		caigoudingdan.setDingdanleixing(4);
+		caigoudingdan.setKehuID(getParameterInt("kehuID"));
 		caigoudingdan.setComplete(0);
 		DingdanDao.update(caigoudingdan);
 	}

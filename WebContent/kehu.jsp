@@ -105,7 +105,7 @@
 	<script id="userListTemplate" type="x-tmpl-mustache">
 {{#userList}}
 <tr role="row" class="user-name odd" data-id="{{kehuID}}"><!--even -->
-    <td><a href="#" class="user-edit" data-id="{{kehuID}}" data-name="{{kehuMingzi}}">{{kehuMingzi}}</a></td>
+    <td>{{kehuMingzi}}</td>
     <td>{{kehuShouji}}</td>
     <td>{{kehuQQ}}</td>
     <td>

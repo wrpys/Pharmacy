@@ -18,17 +18,17 @@ public class CaigoushouhuoController extends ControllerBase{
 
 	public void findAll(){
 		System.out.println("CaigoushouhuoController.findALL()");
-		//定义一个空的caigoudingdan列表
+		//定义一个空的caigoushouhuo列表
 		List<Dingdan> caigoudingdanList=new ArrayList<>();
-		//在caigoudingdanDao中数据库操作 找出所有的caigoudingdanlist列表
+		//在DingdanDao中数据库操作 找出所有的caigoushouhuolist列表
 		Dingdan dingdan = new Dingdan();
 		dingdan.setDingdanleixing(2);
 		caigoudingdanList=DingdanDao.findALL(dingdan);
 		//定义一个json格式
 		JSONObject jsonObject = new JSONObject();
-		//把caigoudingdanlist列表填入json
+		//把caigoushouhuolist列表填入json
 		jsonObject.put("caigoudingdanList", caigoudingdanList);
-		//原路返回caigoudingdanlist列表，用writeJson返回Json数据名字为caigoudingdanglist
+		//原路返回caigoushouhuolist列表，用writeJson返回Json数据名字为caigoushouhuolist
 		writeJson(jsonObject.toString());
 		return;
 	}

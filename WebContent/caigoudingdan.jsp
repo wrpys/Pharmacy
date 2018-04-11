@@ -58,7 +58,7 @@
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
                                 状态
                             </th>
-                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label=""></th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">操作</th>
                         </tr>
                         </thead>
                         <tbody id="userList"></tbody>
@@ -171,11 +171,12 @@
 												data-yaopingID="{{yaopingID}}"
 												data-danjia="{{danjia}}"
 												data-shuliang="{{shuliang}}"	
-												data-cangkuID="{{cangkuID}}"	
+												data-cangkuID="{{cangkuID}}"
+												data-complete="{{complete}}"
 												data-gongyingshangID="{{gongyingshangID}}">
                 <i class="ace-icon fa fa-pencil bigger-100"></i>
             </a>
-             <a class="red user-delete" href="#" data-id="{{dingdanID}}" >
+             <a class="red user-delete" href="#" data-id="{{dingdanID}}" data-complete="{{complete}}" >
                     <i class="ace-icon fa fa-trash-o bigger-100"></i>
              </a>
         </div>
@@ -277,6 +278,11 @@ $(function () {
     function bindUserClick() {
         // 处理点击按钮
         $(".user-edit").click(function (e) {
+        	var complete = $(this).attr("data-complete");
+        	if(complete != "0") {
+        		alert("该订单已经审核，无法修改！");
+        		return ;
+        	}
             var dingdanID = $(this).attr("data-id"); // 选中的id
 			var dingdanBianhao = $(this).attr("data-dingdanBianhao"); 
 			var yaopingID = $(this).attr("data-yaopingID"); 
@@ -318,6 +324,11 @@ $(function () {
         $(".user-delete").click(function (e) {
             e.preventDefault();
             e.stopPropagation(); // 此处必须要取消冒泡,因为是个递归结构,冒泡的话会让一个点击被响应多个
+            var complete = $(this).attr("data-complete");
+        	if(complete != "0") {
+        		alert("该订单已经审核，无法删除！");
+        		return ;
+        	}
             var dingdanID = $(this).attr("data-id");
             if (confirm("确定要删除吗?")) {
                 $.ajax({
@@ -387,7 +398,7 @@ $(function () {
 		});
     }
   	
-  	//加载保存和修改弹出框的药品下拉信息 
+  	//加载保存和修改弹出框的仓库下拉信息 
     function cangkuSelect() {
 		$.ajax({
 			url: "${pageContext.request.contextPath }/cs",

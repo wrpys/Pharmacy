@@ -9,19 +9,20 @@
 
 <div class="page-header">
     <h1>
-        采购收货订单管理
+        销售出货订单管理
     </h1>
 </div>
 <div class="main-content-inner">
         <div class="col-xs-12">
             <div class="table-header">
-               采购收货订单列表&nbsp;&nbsp;
+               销售出货订单列表&nbsp;&nbsp;
                 <a class="green" href="#">
                     <i class="ace-icon fa fa-plus-circle orange bigger-130 user-add"></i>
                 </a>
             </div>
             <div>
                 <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+
                     <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid"
                            aria-describedby="dynamic-table_info" style="font-size:14px">
                         <thead>
@@ -46,7 +47,7 @@
                              总价
                             </th>
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
-                                供应商
+                                客户
                             </th>
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
                                 仓库
@@ -67,21 +68,22 @@
                 </div>
             </div>
         </div>
+    
 </div>
 
 <div id="dialog-saveuser-form" style="display: none;">
     <form id="saveuserForm">
         <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
         	<tr>
-                <td><label for="dingdanBianhao">采购收货订单编号</label></td>
+                <td><label for="dingdanBianhao">销售出货订单编号</label></td>
                 <td><input type="text" name="dingdanBianhao" id="dingdanBianhao" value="" class="text ui-widget-content ui-corner-all"></td>
-                <input type="hidden" name="cls" id="cls" value="CaigoushouhuoController"/>
+                <input type="hidden" name="cls" id="cls" value="XiaoshouchuhuoController"/>
                 <input type="hidden" name="mtd" id="mtd" value="save"/>
             </tr>
             <tr>
-                <td style="width: 80px;"><label for="duties">供应商</label></td>
+                <td style="width: 80px;"><label for="duties">客户</label></td>
                 <td>
-                    <select class="gongyingshang-list" name="gongyingshangID" data-placeholder="选择供应商" style="width: 170px;"></select>
+                    <select class="kehu-list" name="kehuID" data-placeholder="选择客户" style="width: 170px;"></select>
                 </td>
             </tr>
             <tr>
@@ -111,16 +113,16 @@
     <form id="updateuserForm">
         <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
              <tr>
-                <td><label for="dingdanBianhao">采购收货订单编号</label></td>
-                <input type="hidden" name="cls" id="cls" value="CaigoushouhuoController"/>
+                <td><label for="dingdanBianhao">销售出货订单编号</label></td>
+                <input type="hidden" name="cls" id="cls" value="XiaoshouchuhuoController"/>
                 <input type="hidden" name="mtd" id="mtd" value="update"/>
 				<input type="hidden" name="dingdanID" id="dingdanID"/>
                 <td><input type="text" name="dingdanBianhao" id="dialog-updateuser-formDingdanBianhao" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
             <tr>
-                <td style="width: 80px;"><label for="gongyingshangID">供应商</label></td>
+                <td style="width: 80px;"><label for="gongyingshangID">客户</label></td>
                 <td>
-				<select id='dialog-updateuser-formgongyingshangID' class="gongyingshang-list" name="gongyingshangID" data-placeholder="选择供应商" style="width: 170px;"></select>
+				<select id='dialog-updateuser-formgkehuID' class="kehu-list" name="kehuID" data-placeholder="选择供客户" style="width: 170px;"></select>
                 </td>
             </tr>
             <tr>
@@ -158,7 +160,7 @@
     <td>{{danjia}}</td>
 	<td>{{shuliang}}</td>
 	<td>{{zongjia}}</td>
-	<td>{{gongyingshang.gongyingshangMingzi}}</td>
+	<td>{{kehu.kehuMingzi}}</td>
 	<td>{{cangku.cangkuMingzi}}</td>
 	<td>{{riqi}}</td>
 	<td>{{#bold}}{{complete}}{{/bold}}</td>	
@@ -171,7 +173,7 @@
 												data-shuliang="{{shuliang}}"	
 												data-cangkuID="{{cangkuID}}"	
 												data-complete="{{complete}}"
-												data-gongyingshangID="{{gongyingshangID}}">
+												data-kehuID="{{cangkuID}}">
                 <i class="ace-icon fa fa-pencil bigger-100"></i>
             </a>
              <a class="red user-delete" href="#" data-id="{{dingdanID}}" data-complete="{{complete}}" >
@@ -184,10 +186,10 @@
 </script>
 
 <!-- 供应商下拉列表 -->
-<script id="Template" type="x-tmpl-mustache">
-{{#businessList}}
-<option value="{{gongyingshangID}}">{{gongyingshangMingzi}}</option>
-{{/businessList}}
+<script id="cangkuTemplate" type="x-tmpl-mustache">
+{{#cangkuList}}
+<option value="{{cangkuID}}">{{cangkuMingzi}}</option>
+{{/cangkuList}}
 </script>
 
 <!-- 药品下拉列表 -->
@@ -197,11 +199,11 @@
 {{/yaopingList}}
 </script>
 
-<!-- 仓库下拉列表 -->
-<script id="cangkuTemplate" type="x-tmpl-mustache">
-{{#cangkuList}}
-<option value="{{cangkuID}}">{{cangkuMingzi}}</option>
-{{/cangkuList}}
+<!-- 客户下拉列表 -->
+<script id="kehuTemplate" type="x-tmpl-mustache">
+{{#kehuList}}
+<option value="{{kehuID}}">{{kehuMingzi}}</option>
+{{/kehuList}}
 </script>
 
 <script type="text/javascript">
@@ -211,19 +213,19 @@ $(function () {
     var userListTemplate = $('#userListTemplate').html();
     Mustache.parse(userListTemplate);
 
-    var Template = $('#Template').html();
-    Mustache.parse(Template);
-    var yaopingTemplate = $('#yaopingTemplate').html();
-    Mustache.parse(yaopingTemplate);
     var cangkuTemplate = $('#cangkuTemplate').html();
     Mustache.parse(cangkuTemplate);
+    var yaopingTemplate = $('#yaopingTemplate').html();
+    Mustache.parse(yaopingTemplate);
+    var kehuTemplate = $('#kehuTemplate').html();
+    Mustache.parse(kehuTemplate);
     loadUserList();
     // 加载信息,并渲染
     function loadUserList() {
         var url = "${pageContext.request.contextPath }/cs";
         $.ajax({
         	url: url,
-        	data:{cls:'CaigoushouhuoController',mtd:'findAll'},            
+        	data:{cls:'XiaoshouchuhuoController',mtd:'findAll'},            
             success: function (result) {            	
                 renderUserListAndPage(result);
             }
@@ -237,7 +239,7 @@ $(function () {
                      var status = render(text); // 获取出渲染后的值
                      if (status == '1') {
                          return "<span class='label label-sm label-success'>结算</span>";
-                     } else if (status == '0') {
+                     }else if (status == '0') {
                          return "<span class='label label-sm label-success'>未结算</span>";
                      }
              }
@@ -251,12 +253,12 @@ $(function () {
         	height: 450,
         	width: 450,
             modal: true,
-            title: "新增采购收货订单",
+            title: "新增销售出货订单",
             open: function (event, ui) {
                 $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮
-                gongyingshangSelect();
-                yaopingSelect();
                 cangkuSelect();
+                yaopingSelect();
+                kehuSelect();
                 $("#saveuserForm")[0].reset();
             },
             buttons: {
@@ -287,16 +289,16 @@ $(function () {
 			var danjia = $(this).attr("data-danjia"); 
 			var shuliang = $(this).attr("data-shuliang"); 
 			var cangkuID = $(this).attr("data-cangkuID"); 
-			var gongyingshangID = $(this).attr("data-gongyingshangID"); 
+			var kehuID = $(this).attr("data-kehuID"); 
             $("#dialog-updateuser-form").dialog({
             	height: 450,
             	width: 450,
                 modal: true,
-                title: "修改采购收货订单",
+                title: "修改销售出货订单",
                 open: function (event, ui) {
-                	gongyingshangSelect();
-                	yaopingSelect();
                 	cangkuSelect();
+                	yaopingSelect();
+                	kehuSelect();
                     $("#updateuserForm")[0].reset();
                     $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮
                    $("#dingdanID").val(dingdanID);
@@ -305,7 +307,7 @@ $(function () {
 				   $("#dialog-updateuser-formdanjia").val(danjia);
 				   $("#dialog-updateuser-formshuliang").val(shuliang);
 				   $("#dialog-updateuser-formcangkuID").val(cangkuID);
-				   $("#dialog-updateuser-formgongyingshangID").val(gongyingshangID);
+				   $("#dialog-updateuser-formkehuID").val(kehuID);
                 },
                 buttons: {
                     "更新": function (e) {
@@ -332,7 +334,7 @@ $(function () {
                 $.ajax({
                     url: "${pageContext.request.contextPath }/cs",
                     data: {
-                    	cls:'CaigoushouhuoController',mtd:'delete',
+                    	cls:'XiaoshouchuhuoController',mtd:'delete',
                     	dingdanID: dingdanID
                     },
                     success: function () {
@@ -368,16 +370,16 @@ $(function () {
             }
         });
     }
-  	//加载保存和修改弹出框的供应商下拉信息 
-    function gongyingshangSelect() {
-		$.ajax({
+  	//加载保存和修改弹出框的仓库下拉信息 
+    function cangkuSelect() {
+    	$.ajax({
 			url: "${pageContext.request.contextPath }/cs",
-			data:{cls:'GongyingshangController',mtd:'findAll'},
+			data:{cls:'CangkuController',mtd:'findAll'},
 			type: 'POST',
 			async: false,
 			success: function (result) {
-				var rendered = Mustache.render(Template, {"businessList": result.gongyingshang});
-		         $('.gongyingshang-list').html(rendered);
+				var rendered = Mustache.render(cangkuTemplate, {"cangkuList": result.cangku});
+		         $('.cangku-list').html(rendered);
 			}
 		});
     }
@@ -396,16 +398,16 @@ $(function () {
 		});
     }
   	
-  	//加载保存和修改弹出框的仓库下拉信息 
-    function cangkuSelect() {
+  	//加载保存和修改弹出框的客户下拉信息 
+    function kehuSelect() {
 		$.ajax({
 			url: "${pageContext.request.contextPath }/cs",
-			data:{cls:'CangkuController',mtd:'findAll'},
+			data:{cls:'KehuController',mtd:'findAll'},
 			type: 'POST',
 			async: false,
 			success: function (result) {
-				var rendered = Mustache.render(cangkuTemplate, {"cangkuList": result.cangku});
-		         $('.cangku-list').html(rendered);
+				var rendered = Mustache.render(kehuTemplate, {"kehuList": result.kehuList});
+		         $('.kehu-list').html(rendered);
 			}
 		});
     }

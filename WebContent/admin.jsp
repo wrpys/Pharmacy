@@ -90,18 +90,13 @@
 
 					<ul class="submenu">
 						<li class=""><a class="popstyle"
-							href="xiaoshoudingdangbaocun.jsp" target="_blank"> <i
-								class="menu-icon fa fa-caret-right"></i> 新增销售订货单
+							href="xiaoshoudingdan.jsp" target="_blank"> <i
+								class="menu-icon fa fa-caret-right"></i> 销售订单
 						</a> <b class="arrow"></b></li>
 						<li class=""><a class="popstyle"
-							href="xiaoshoufahuobaocun.jsp" target="_blank"> <i
-								class="menu-icon fa fa-caret-right"></i> 新增销售出货单
+							href="xiaoshouchuhuo.jsp" target="_blank"> <i
+								class="menu-icon fa fa-caret-right"></i> 销售出货
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="xiaoshoufahuo.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								销售出货单
-						</a> <b class="arrow"></b></li>
-
 					</ul></li>
 
 				<li class=""><a href="" class="dropdown-toggle"> <i
