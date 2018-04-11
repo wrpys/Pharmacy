@@ -28,6 +28,39 @@ public class ZhanghuDao {
 		return Zhanghu;
 		//把数据库查到的数据填充到zhanghu这个对象中，返回给谁了，与findALL()有关，findALL()中也返回给zhanghuController了
 	}
+	
+	/**
+	 * 新增账户信息
+	 * @param zhanghu
+	 * @return
+	 */
+	public static boolean save(Zhanghu zhanghu){
+		try {
+			String sql = null;			
+			sql = "insert into zhanghu(mingzi,qianshu) values('"+zhanghu.getMingzi()+"','"+zhanghu.getQianshu()+"')";
+			System.out.println(sql);
+			//开启数据库链接
+			Connection connection = ProjectShare.getDbPool().getConnection();
+			//开启数据库事物
+			ProjectShare.getDbPool().transaction(connection, true);
+			//数据库更新
+			ProjectShare.getDbPool().update(connection, sql);
+			//提交操作
+			ProjectShare.getDbPool().commit(connection);
+			//事物关闭
+			ProjectShare.getDbPool().transaction(connection, false);
+			//链接关闭
+			ProjectShare.getDbPool().closeConnection(connection);
+			return true;
+			//异常
+		} catch (Exception e) {
+			// TODO: handle exception
+			ProjectShare.log("zhanghu.save error: "+e.getMessage());
+			return false;
+		}
+	
+	}
+	
 	/**
 	 * 修改账户信息
 	 * @param zhanghu

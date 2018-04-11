@@ -125,15 +125,14 @@
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 							财务管理 </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
-
 					<ul class="submenu">
-						<li class=""><a class="popstyle" href="rukuandan.jsp"
+						<li class=""><a class="popstyle" href="shoukuanshenhe.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								收款单
+								收款审核
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="fukuandan.jsp"
+						<li class=""><a class="popstyle" href="fukuanshenhe.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								付款单
+								付款审核
 						</a> <b class="arrow"></b></li>
 						<li class=""><a class="popstyle" href="zhanghu.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
@@ -171,7 +170,7 @@
 
 				<li class="nolook"><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa menu-icon fa fa-flask "></i> <span
-						class="menu-text"> 统计汇总表</span> <b class="arrow fa fa-angle-down"></b>
+						class="menu-text"> 统计决策</span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
 					<ul class="submenu">
