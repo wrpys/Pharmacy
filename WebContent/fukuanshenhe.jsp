@@ -74,6 +74,7 @@
                 <input type="hidden" name="cls" id="cls" value="FakuanshenheController"/>
                 <input type="hidden" name="mtd" id="mtd" value="update"/>
 				<input type="hidden" name="dingdanID" id="dingdanID"/>
+				<input type="hidden" name="zongjia" id="zongjia"/>
                 <td><input type="text" name="dingdanBianhao" id="dialog-updateuser-formDingdanBianhao" readonly="readonly" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
             <tr>
@@ -82,6 +83,13 @@
 				<select id='dialog-updateuser-formcomplete' name="complete" style="width: 170px;">
 					<option value="0">未结算</option>
 					<option value="1">结算</option>
+				</select>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 80px;"><label for="zhanghuID">账户</label></td>
+                <td>
+				<select id='dialog-updateuser-formzhanghuID' name="zhanghuID" style="width: 170px;">
 				</select>
                 </td>
             </tr>
@@ -106,6 +114,7 @@
         <div class="hidden-sm hidden-xs action-buttons">
             <a class="green user-edit" href="#" data-id="{{dingdanID}}"
 												data-dingdanBianhao="{{dingdanBianhao}}"
+												data-zongjia="{{zongjia}}"
 												data-complete="{{complete}}">
                 <i class="ace-icon fa fa-pencil bigger-100"></i>
             </a>
@@ -114,6 +123,12 @@
 </tr>
 {{/userList}}
 </script>
+<!-- 账户下拉列表 -->
+<script id="zhanghuTemplate" type="x-tmpl-mustache">
+{{#zhanghuList}}
+<option value="{{ID}}">{{mingzi}}</option>
+{{/zhanghuList}}
+</script>
 
 <script type="text/javascript">
 $(function () {
@@ -121,6 +136,9 @@ $(function () {
     
     var userListTemplate = $('#userListTemplate').html();
     Mustache.parse(userListTemplate);
+    
+    var zhanghuTemplate = $('#zhanghuTemplate').html();
+    Mustache.parse(zhanghuTemplate);
 
     loadUserList();
     // 加载信息,并渲染
@@ -158,15 +176,18 @@ $(function () {
         	var complete = $(this).attr("data-complete");
             var dingdanID = $(this).attr("data-id"); // 选中的id
 			var dingdanBianhao = $(this).attr("data-dingdanBianhao"); 
+			var zongjia = $(this).attr("data-zongjia"); 
             $("#dialog-updateuser-form").dialog({
             	height: 250,
             	width: 450,
                 modal: true,
                 title: "结算采购收货订单",
                 open: function (event, ui) {
+                	zhanghuSelect();
                     $("#updateuserForm")[0].reset();
                     $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮
                    $("#dingdanID").val(dingdanID);
+                   $("#zongjia").val(zongjia);
 				   $("#dialog-updateuser-formDingdanBianhao").val(dingdanBianhao);
 				   $("#dialog-updateuser-formcomplete").val(complete);
                 },
@@ -188,12 +209,30 @@ $(function () {
             url: "${pageContext.request.contextPath }/cs",
             data: $("#updateuserForm").serializeArray(),
             type: 'POST',
-            success: function () {
-            		alert("修改成功！");
-            	   $("#dialog-updateuser-form").dialog("close");
-            	   loadUserList();
+            success: function (data) {
+           	   if(data && data.status == 0) {
+           		   alert(data.msg);
+           		   return;
+           	   } 
+       		   alert("结算成功！");
+           	   $("#dialog-updateuser-form").dialog("close");
+           	   loadUserList();
             }
         });
+    }
+    
+ 	// 加载保存和修改弹出框账户下拉信息 
+    function zhanghuSelect() {
+    	$.ajax({
+			url: "${pageContext.request.contextPath }/cs",
+			data:{cls:'ZhanghuController',mtd:'getAll'},
+			type: 'POST',
+			async: false,
+			success: function (result) {
+				var rendered = Mustache.render(zhanghuTemplate, {"zhanghuList": result.ZhanghuList});
+		         $('#dialog-updateuser-formzhanghuID').html(rendered);
+			}
+		});
     }
   
  });
