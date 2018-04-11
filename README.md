@@ -1,1 +1,1 @@
-# Pharmacy
+# Pharmacy 药品管理系统
