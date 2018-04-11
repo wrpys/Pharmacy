@@ -16,19 +16,20 @@ import edu.hzcc.webdemo.util.ControllerBase;
  */
 public class ShoukuanshenheController extends ControllerBase {
 
+	//查找所有销售出货订单
 	public void findAll() {
 		System.out.println("ShoukuanshenheController.findALL()");
-		// 定义一个空的caigoudingdan列表
-		List<Dingdan> caigoudingdanList = new ArrayList<>();
-		// 在caigoudingdanDao中数据库操作 找出所有的caigoudingdanlist列表
+		// 定义一个空的dingdan列表
+		List<Dingdan> dingdanList = new ArrayList<>();
+		// 在caigoudingdanDao中数据库操作 找出所有的dingdanList列表
 		Dingdan dingdan = new Dingdan();
-		dingdan.setDingdanleixing(4);
-		caigoudingdanList = DingdanDao.findALL(dingdan);
+		dingdan.setDingdanleixing(4);// 查找订单为：销售出货订单
+		dingdanList = DingdanDao.findALL(dingdan);
 		// 定义一个json格式
 		JSONObject jsonObject = new JSONObject();
-		// 把caigoudingdanlist列表填入json
-		jsonObject.put("caigoudingdanList", caigoudingdanList);
-		// 原路返回caigoudingdanlist列表，用writeJson返回Json数据名字为caigoudingdanglist
+		// 把dingdanList列表填入json
+		jsonObject.put("caigoudingdanList", dingdanList);
+		// 原路返回dingdanList列表，用writeJson返回Json数据名字为caigoudingdanList
 		writeJson(jsonObject.toString());
 		return;
 	}
@@ -41,15 +42,14 @@ public class ShoukuanshenheController extends ControllerBase {
 		// 将销售发货订单的状态改为已结算
 		boolean isSucess = DingdanDao.updateComplete(dingdan);
 		// 审核成功后，进行账户金额增加
-		if(dingdan.getComplete().intValue() == 1 && isSucess) {
+		if (dingdan.getComplete().intValue() == 1 && isSucess) {
 			Integer zhanghuID = getParameterInt("zhanghuID");
 			Double zongjia = getParameterDouble("zongjia");
 			Zhanghu zhanghu = ZhanghuDao.findOne(zhanghuID);
 			// 修改账户金额
-			ZhanghuDao.updatezhanghuQianshu(zhanghuID, zhanghu.getQianshu() + zongjia);
+			ZhanghuDao.updatezhanghuQianshu(zhanghuID, zhanghu.getQianshu()
+					+ zongjia);
 		}
 	}
-	
-	
 
 }

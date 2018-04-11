@@ -13,6 +13,7 @@ import edu.hzcc.webdemo.util.ControllerBase;
  */
 public class ZhanghuController extends ControllerBase {
 
+	// 查找所有账户
 	public void getAll() {
 		// 定义一个空的zhanghu列表
 		List<Zhanghu> zhanghuList = new ArrayList<>();
@@ -27,6 +28,7 @@ public class ZhanghuController extends ControllerBase {
 		return;
 	}
 
+	// 修改账户
 	public void update() {
 		Zhanghu zhanghu = new Zhanghu();
 		// getParameter("ID")获取页面的传来值ID
@@ -38,6 +40,7 @@ public class ZhanghuController extends ControllerBase {
 		ZhanghuDao.update(zhanghu);
 	}
 
+	// 新增账户
 	public void save() {
 		Zhanghu zhanghu = new Zhanghu();
 		// getParameter("mingzi")获取页面的传来值mingzi

@@ -38,6 +38,7 @@ public class YaopingDao {
 		//把数据库查到的数据填充到yaoping这个对象中  返回给使用对象，与findALL()有关吗，findALL()中也返回给yaopingController
 	}
 	
+	// 新增药品
 	public static boolean save(Yaoping yaoping){
 		try {
 			String sql = null;	
@@ -67,6 +68,7 @@ public class YaopingDao {
 			return false;
 		}
 	}
+	
 	//为什么修改和新增分开写，与之前的格式不同？？？？？？？？？？？？？？？？？？？？？？？？？？
 	//药品ID是自己编写的 ，不是自动生成，保存和修改都有，所以分开写
 	public static boolean update(Yaoping yaoping){
@@ -93,6 +95,7 @@ public class YaopingDao {
 		}
 	}
 	
+	// 删除
 	public static boolean delete(int yaopingID){
 		try {
 			//开启数据库链接
@@ -114,6 +117,7 @@ public class YaopingDao {
 		}
 	}
 	
+	// 查找所有
 	public static List<Yaoping> findALL(){
 		try {
 			List<Yaoping> list = new ArrayList<>();
@@ -144,6 +148,7 @@ public class YaopingDao {
 			return null;
 		}
 	}
+	
 	//根据药品名字查询     被谁调用，返回：yaopingController的findOne方法
 	public static Yaoping findByYaopingMingzi(String yaopingMingzi){
 		Yaoping yaoping = null;
@@ -166,6 +171,7 @@ public class YaopingDao {
 			return null;
 		}
 	}
+	
 	//什么意思，为什么有两个？？？？？？？？？？？？？？？？？？？？？？？？？？？	
 	//根据药品ID查询   生成库存记录是，根据库存的药品ID，找出yaoping这个类，然后在更新数量    KucunController。save方法调用
 	public static Yaoping findByYaopingID(int yaopingID){

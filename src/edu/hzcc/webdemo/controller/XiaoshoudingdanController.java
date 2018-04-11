@@ -16,23 +16,25 @@ import edu.hzcc.webdemo.util.ControllerBase;
  */
 public class XiaoshoudingdanController extends ControllerBase{
 
+	// 查找所有销售订单
 	public void findAll(){
 		System.out.println("XiaoshoudingdanController.findALL()");
-		//定义一个空的caigoudingdan列表
-		List<Dingdan> caigoudingdanList=new ArrayList<>();
+		//定义一个空的dingdan列表
+		List<Dingdan> dingdanList=new ArrayList<>();
 		//在caigoudingdanDao中数据库操作 找出所有的caigoudingdanlist列表
 		Dingdan dingdan = new Dingdan();
-		dingdan.setDingdanleixing(3);
-		caigoudingdanList=DingdanDao.findALL(dingdan);
+		dingdan.setDingdanleixing(3);// 查找订单为：销售订单
+		dingdanList=DingdanDao.findALL(dingdan);
 		//定义一个json格式
 		JSONObject jsonObject = new JSONObject();
-		//把caigoudingdanlist列表填入json
-		jsonObject.put("caigoudingdanList", caigoudingdanList);
-		//原路返回caigoudingdanlist列表，用writeJson返回Json数据名字为caigoudingdanglist
+		//把dingdanList列表填入json
+		jsonObject.put("caigoudingdanList", dingdanList);
+		//原路返回dingdanList列表，用writeJson返回Json数据名字为caigoudingdanglist
 		writeJson(jsonObject.toString());
 		return;
 	}
 
+	// 删除销售订单
 	public void delete(){
 		System.out.println("XiaoshoudingdanController.delete()");
 		//getParameterInt收到页面提交的dingdanID--->要和data中的dingdanID一样
@@ -42,8 +44,10 @@ public class XiaoshoudingdanController extends ControllerBase{
 		return;
 	}
 	
+	// 新增销售订单
 	public void save() {
 		Dingdan caigoudingdan=new Dingdan();
+		// 从页面表单中获取。name="dingdanBianhao"
 		caigoudingdan.setDingdanBianhao(getParameter("dingdanBianhao"));
 		caigoudingdan.setYaopingID(getParameterInt("yaopingID"));
 		caigoudingdan.setDanjia(getParameterDouble("danjia"));
@@ -57,11 +61,14 @@ public class XiaoshoudingdanController extends ControllerBase{
 		caigoudingdan.setDingdanleixing(3);
 		caigoudingdan.setKehuID(getParameterInt("kehuID"));
 		caigoudingdan.setComplete(0);
+		// 在DingdanDao中数据库操作 新增一个订单
 		DingdanDao.save(caigoudingdan);
 	}
 	
+	//修改销售订单
 	public void update() {
 		Dingdan caigoudingdan=new Dingdan();
+		// 从页面表单中获取。name="dingdanID"
 		caigoudingdan.setDingdanID(getParameterInt("dingdanID"));
 		caigoudingdan.setDingdanBianhao(getParameter("dingdanBianhao"));
 		caigoudingdan.setYaopingID(getParameterInt("yaopingID"));
@@ -76,6 +83,7 @@ public class XiaoshoudingdanController extends ControllerBase{
 		caigoudingdan.setDingdanleixing(3);
 		caigoudingdan.setKehuID(getParameterInt("kehuID"));
 		caigoudingdan.setComplete(0);
+		// 在DingdanDao中数据库操作 修改一个订单
 		DingdanDao.update(caigoudingdan);
 	}
 	

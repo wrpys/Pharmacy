@@ -7,8 +7,7 @@ import edu.hzcc.webdemo.dao.YaopingDao;
 import edu.hzcc.webdemo.pojo.Yaoping;
 import edu.hzcc.webdemo.util.ControllerBase;
 import net.sf.json.JSONObject;
-/*
- 
+/**
  * 药品的页面交互，页面根据cls:'YaopingController',mtd:'findAll'来调用
  * 结果返回页面
  */

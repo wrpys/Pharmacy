@@ -12,13 +12,14 @@ import edu.hzcc.webdemo.pojo.Rizhi;
 import edu.hzcc.webdemo.pojo.Yonghu;
 import edu.hzcc.webdemo.util.ControllerBase;
 
-/*
- * 操作人员
+/**
+ * 操作人员管理
  */
 public class YonghuController extends ControllerBase {
 	public static int loginyonghuID;
 	public static String logindengluMingzi;
 
+	// 查找所有操作人员
 	public void getAll() {
 		System.out.println("yonghuController.getALL()");
 		List<Yonghu> yonghuList = new ArrayList<>();
@@ -29,14 +30,17 @@ public class YonghuController extends ControllerBase {
 		return;
 	}
 
+	// 根据用户ID删除用户
 	public void delete() {
 		int id = getParameterInt("yonghuID");
 		YonghuDao.delete(id);
 		return;
 	}
 
+	// 保存用户
 	public void save() {
 		Yonghu yonghu = new Yonghu();
+		// 从表单中获取信息name="yonghuMingzi"
 		yonghu.setYonghuMingzi(getParameter("yonghuMingzi"));
 		yonghu.setDengluMingzi(getParameter("dengluMingzi"));
 		yonghu.setMiMa(getParameter("miMa"));
@@ -45,8 +49,10 @@ public class YonghuController extends ControllerBase {
 		YonghuDao.save(yonghu);
 	}
 
+	// 更新用户
 	public void update() {
 		Yonghu yonghu = new Yonghu();
+		// 从表单中获取信息name="yonghuMingzi"
 		yonghu.setYonghuMingzi(getParameter("yonghuMingzi"));
 		yonghu.setDengluMingzi(getParameter("dengluMingzi"));
 		yonghu.setMiMa(getParameter("miMa"));
@@ -59,8 +65,7 @@ public class YonghuController extends ControllerBase {
 	/**
 	 * 登录验证
 	 */
-	// 详细写下？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-	// login，jsp登录时
+	// login.jsp 点击登录时
 	public void login() {
 		// 获取名字
 		String yonghuname = getParameter("yonghuname");
@@ -81,7 +86,7 @@ public class YonghuController extends ControllerBase {
 			jsonObject.put("falseMe", true);
 			// 告诉页面登录的权限
 			jsonObject.put("duties", yonghu.getZhiwu());
-			// 日志
+			// 记录登录登出日志
 			Rizhi rizhi = new Rizhi();
 			rizhi.setYonghuID(loginyonghuID);
 			rizhi.setDengluMingzi(logindengluMingzi);
@@ -102,6 +107,9 @@ public class YonghuController extends ControllerBase {
 
 	// 系统退出
 	public void loginout() {
+		// 清除用户信息
+		loginyonghuID = 0;
+		logindengluMingzi = null;
 		// 日志
 		Rizhi rizhi = new Rizhi();
 		rizhi.setYonghuID(loginyonghuID);

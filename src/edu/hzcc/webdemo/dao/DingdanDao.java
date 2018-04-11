@@ -48,6 +48,7 @@ public class DingdanDao {
 		return dingdan;
 	}
 	
+	// 新增
 	public static boolean save(Dingdan dingdan){
 		try {
 			String sql = null;
@@ -80,6 +81,7 @@ public class DingdanDao {
 		}
 	}
 
+	// 修改
 	public static boolean update(Dingdan dingdan){
 		try {
 			String sql = null;
@@ -120,6 +122,7 @@ public class DingdanDao {
 		}
 	}
 	
+	// 修改状态
 	public static boolean updateComplete(Dingdan dingdan){
 		try {
 			String sql = null;
@@ -150,6 +153,7 @@ public class DingdanDao {
 		}
 	}
 	
+	// 删除
 	public static boolean delete(int dingdanID){
 		try {
 			//开启数据库链接
@@ -171,6 +175,7 @@ public class DingdanDao {
 		}
 	}
 
+	// 查找所有
 	public static List<Dingdan> findALL(Dingdan params){
 		try {
 			List<Dingdan> list = new ArrayList<>();

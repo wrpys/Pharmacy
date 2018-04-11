@@ -8,12 +8,11 @@ import edu.hzcc.webdemo.pojo.Kehu;
 import edu.hzcc.webdemo.util.ControllerBase;
 import net.sf.json.JSONObject;
 /**
-  * 客户的页面交互，页面根据cls:'KehuController',mtd:'findAll'来调用
- * 结果返回页面
- *
+  * 客户的页面交互，页面根据cls:'KehuController',mtd:'findAll'来调用结果返回页面
  */
 public class KehuController extends ControllerBase{
 
+	// 查找所有供应商
 	public void findAll() {
 		System.out.println("kehuController.getALL()");
 		//定义一个空的Gongyingshang列表
@@ -29,7 +28,7 @@ public class KehuController extends ControllerBase{
 		return;
 	}
 	
-	
+	// 删除供应商
 	public void delete() {
 		System.out.println("kehuController.delete()");
 		//getParameterInt收到页面提交的KehuID--->要和data中的KehuID一样
@@ -39,6 +38,7 @@ public class KehuController extends ControllerBase{
 		return;
 	}
 	
+	// 新增供应商
 	public void save() {
 		System.out.println("kehuController.save()");
 		Kehu kehu=new Kehu();
@@ -52,6 +52,7 @@ public class KehuController extends ControllerBase{
 		KehuDao.save(kehu);
 	}
 	
+	// 修改供应商
 	public void update() {
 		System.out.println("kehuController.update()");
 		Kehu kehu=new Kehu();

@@ -27,6 +27,7 @@ public class RizhiDao {
 
 	}
 
+	//新增日志
 	public static boolean save(Rizhi rizhi) {
 		try {
 			String sql = null;
@@ -53,6 +54,7 @@ public class RizhiDao {
 		}
 	}
 
+	// 查找所有日志
 	public static List<Rizhi> findALL() {
 		try {
 			List<Rizhi> list = new ArrayList<>();

@@ -17,13 +17,14 @@ import edu.hzcc.webdemo.util.ControllerBase;
  */
 public class FakuanshenheController extends ControllerBase {
 
+	// 查找所有采购收获订单
 	public void findAll() {
 		System.out.println("FakuanshenheControllerController.findALL()");
 		// 定义一个空的caigoushouhuo列表
 		List<Dingdan> caigoudingdanList = new ArrayList<>();
 		// 在DingdanDao中数据库操作 找出所有的caigoushouhuolist列表
 		Dingdan dingdan = new Dingdan();
-		dingdan.setDingdanleixing(2);
+		dingdan.setDingdanleixing(2);// 查找订单为：采购收获订单
 		caigoudingdanList = DingdanDao.findALL(dingdan);
 		// 定义一个json格式
 		JSONObject jsonObject = new JSONObject();
