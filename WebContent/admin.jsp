@@ -204,10 +204,6 @@
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								销售汇总审核
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="cangkutongji.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								仓库统计
-						</a> <b class="arrow"></b></li>
 
 						<li class=""><a class="popstyle" href="kucunhuizong.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
