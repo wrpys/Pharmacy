@@ -11,17 +11,18 @@ public class Dingdan {
 	private Double danjia;
 	private Integer shuliang;
 	private Double zongjia;
-	private Integer dingdanleixing;
+	private Integer dingdanleixing;//1采购订单 2采购收货 3销售订单 4销售发货
 	private String riqi;
 	private Integer gongyingshangID;
 	private Integer kehuID;
 	private Integer cangkuID;
-	private Integer complete;
+	private Integer complete;//0未完成，1已完成
 	
 	private Yaoping yaoping;
 	private Gongyingshang gongyingshang;
 	private Kehu kehu;
 	private Cangku cangku;
+	private Kucun kucun;
 	
 	public Integer getDingdanID() {
 		return dingdanID;
@@ -118,6 +119,12 @@ public class Dingdan {
 	}
 	public void setCangku(Cangku cangku) {
 		this.cangku = cangku;
+	}
+	public Kucun getKucun() {
+		return kucun;
+	}
+	public void setKucun(Kucun kucun) {
+		this.kucun = kucun;
 	}
 	
 }

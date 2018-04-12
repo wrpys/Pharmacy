@@ -167,7 +167,29 @@
 						</a> <b class="arrow"></b></li>
 
 					</ul></li>
+				
+				<li class="nolook"><a href="#" class="dropdown-toggle"> <i
+						class="menu-icon fa menu-icon fa fa-flask "></i> <span
+						class="menu-text"> 仓库统计</span> <b class="arrow fa fa-angle-down"></b>
+				</a> <b class="arrow"></b>
 
+					<ul class="submenu">
+
+						<li class=""><a class="popstyle" href="caigoudingdang.jsp"
+							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
+								采购订货单汇总表
+						</a> <b class="arrow"></b></li>
+						<li class=""><a class="popstyle" href="xiaoshoudingdang.jsp"
+							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
+								销售订货单汇总表
+						</a> <b class="arrow"></b></li>
+						<li class=""><a class="popstyle" href="kucunhuizong.jsp"
+							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
+								仓库汇总表
+						</a> <b class="arrow"></b></li>
+					</ul></li>
+				
+				
 				<li class="nolook"><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa menu-icon fa fa-flask "></i> <span
 						class="menu-text"> 统计决策</span> <b class="arrow fa fa-angle-down"></b>

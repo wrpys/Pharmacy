@@ -18,6 +18,12 @@ public class Cangkushezi {
 	 * 数据库没有这个字段，为了表格显示
 	 */
 	private String cangkuMingzi;
+	
+	private Yaoping yaoping;
+	
+	private Dingdan dingdan;
+	private Kucun kucun;
+	
 	public int getId() {
 		return id;
 	}
@@ -48,8 +54,25 @@ public class Cangkushezi {
 	public void setCangkuMingzi(String cangkuMingzi) {
 		this.cangkuMingzi = cangkuMingzi;
 	}
+	public Dingdan getDingdan() {
+		return dingdan;
+	}
+	public void setDingdan(Dingdan dingdan) {
+		this.dingdan = dingdan;
+	}
+	public Kucun getKucun() {
+		return kucun;
+	}
+	public void setKucun(Kucun kucun) {
+		this.kucun = kucun;
+	}
 	
-	
+	public Yaoping getYaoping() {
+		return yaoping;
+	}
+	public void setYaoping(Yaoping yaoping) {
+		this.yaoping = yaoping;
+	}
 	
 	
 	

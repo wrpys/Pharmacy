@@ -19,15 +19,50 @@ public class KucunDao {
 		Kucun kucun = new Kucun();
 		kucun.setKucunID(rs.getInt("kucunID"));
 		kucun.setYaopingID(rs.getInt("yaopingID"));
-		kucun.setYaopingMingzi(rs.getString("yaopingMingzi"));
-		kucun.setDingdanhao(rs.getInt("dingdanhao"));
-		kucun.setYaopingDanwei(rs.getString("yaopingDanwei"));
+		kucun.setCangKuID(rs.getInt("cangKuID"));
+		kucun.setDingdanID(rs.getInt("dingdanID"));
 		kucun.setShuliang(rs.getInt("shuliang"));
 		kucun.setRiqi(rs.getString("riqi"));
 		kucun.setZhuangtai(rs.getInt("zhuangtai"));
+		// 药品详情
+		if(kucun.getYaopingID() > 0) {
+			kucun.setYaoping(YaopingDao.findByYaopingID(kucun.getYaopingID()));
+		}
 		return kucun;
 	}
-
+	
+	
+	/**
+	 * 
+	 * @param yaoping 
+	 * @param cangkuID 
+	 * @return 数据少于预警设置数量的库存列表
+	 */
+//详细写一下？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+	public static  Kucun findAllMinshuliang(int cangkuID, int yaopingID){
+		try {
+			Kucun kucun = new Kucun();
+			Connection connection = ProjectShare.getDbPool().getConnection();
+			String sql = "select * from kucun where kucunID='"+cangkuID+"'" + " and yaopingID=" + yaopingID;
+			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
+			while(rs.next()){
+				kucun = converkucun(rs);
+				
+			}
+			rs.close();
+			
+			ProjectShare.getDbPool().closeConnection(connection);
+			
+			return kucun;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			ProjectShare.log("kucun.findALL error: "+e.getMessage());
+			return null;
+		}
+	
+	}
+	
 	// 没有实现数据库数量操作以及状态？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
 	public static boolean save(Kucun kucun) {
 		try {
@@ -70,7 +105,59 @@ public class KucunDao {
 			return false;
 		}
 	}
+	
+	/*
+	 * 根据订单ID获取库存
+	 */
+	public static Kucun findKucunBydingdanID(int dingdanID){
+		try {
+			Kucun kucun = new Kucun();
+			Connection connection = ProjectShare.getDbPool().getConnection();
+			String sql = "select * from kucun where dingdanID='"+dingdanID+"'";
+			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
+			while(rs.next()){
+				kucun = converkucun(rs);
+				
+			}
+			rs.close();
+			
+			ProjectShare.getDbPool().closeConnection(connection);
+			
+			return kucun;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			ProjectShare.log("kucun.findALL error: "+e.getMessage());
+			return null;
+		}
+	}
 
+	/*
+	 * 根据主键ID获取库存
+	 */
+	public static Kucun findKucunByPK(int kucunID){
+		try {
+			Kucun kucun = new Kucun();
+			Connection connection = ProjectShare.getDbPool().getConnection();
+			String sql = "select * from kucun where kucunID='"+kucunID+"'";
+			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
+			while(rs.next()){
+				kucun = converkucun(rs);
+				
+			}
+			rs.close();
+			
+			ProjectShare.getDbPool().closeConnection(connection);
+			
+			return kucun;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			ProjectShare.log("kucun.findALL error: "+e.getMessage());
+			return null;
+		}
+	}
+	
 	public static boolean delete(int kucunID) {
 		try {
 			Connection connection = ProjectShare.getDbPool().getConnection();

@@ -79,6 +79,9 @@ public class CangkusheziDao {
 				if(Cangkushezi.getCangkuID()>0) {
 					Cangkushezi.setCangkuMingzi(CangkuDao.findBycangkuID(Cangkushezi.getCangkuID()).getCangkuMingzi());
 				}
+				if(Cangkushezi.getYaopingID() > 0) {
+					Cangkushezi.setYaoping(YaopingDao.findByYaopingID(Cangkushezi.getYaopingID()));
+				}
 				list.add(Cangkushezi);
 				
 			}

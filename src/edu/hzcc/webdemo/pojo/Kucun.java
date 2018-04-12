@@ -28,12 +28,31 @@ public class Kucun {
 	private int shuliang;
 	
 	private String riqi;
+	
+	/**
+	 * 仓库ID
+	 */
+	private int cangKuID;
+	
+	/**
+	 * 订单ID
+	 */
+	private int dingdanID;
+	
+	private Yaoping yaoping;
+	
 	/*
 	 * 
 	 * 1入库
 	 * 2出库
 	 */
 	private int zhuangtai;
+	public Yaoping getYaoping() {
+		return yaoping;
+	}
+	public void setYaoping(Yaoping yaoping) {
+		this.yaoping = yaoping;
+	}
 	public int getKucunID() {
 		return kucunID;
 	}
@@ -81,6 +100,18 @@ public class Kucun {
 	}
 	public void setZhuangtai(int zhuangtai) {
 		this.zhuangtai = zhuangtai;
+	}
+	public int getCangKuID() {
+		return cangKuID;
+	}
+	public void setCangKuID(int cangKuID) {
+		this.cangKuID = cangKuID;
+	}
+	public int getDingdanID() {
+		return dingdanID;
+	}
+	public void setDingdanID(int dingdanID) {
+		this.dingdanID = dingdanID;
 	}
 	@Override
 	public String toString() {
