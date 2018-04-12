@@ -38,6 +38,7 @@ public class YaopingDao {
 		//把数据库查到的数据填充到yaoping这个对象中  返回给使用对象，与findALL()有关吗，findALL()中也返回给yaopingController
 	}
 	
+	// 新增药品
 	public static boolean save(Yaoping yaoping){
 		try {
 			String sql = null;	
@@ -67,13 +68,14 @@ public class YaopingDao {
 			return false;
 		}
 	}
+	
 	//为什么修改和新增分开写，与之前的格式不同？？？？？？？？？？？？？？？？？？？？？？？？？？
 	//药品ID是自己编写的 ，不是自动生成，保存和修改都有，所以分开写
 	public static boolean update(Yaoping yaoping){
 		try {
 			String sql = null;
 			//执行修改
-			sql ="update yaoping set yaopingBianhao= '" + yaoping.getYaopingBianhao() + "' yaopingMingzi= '"+yaoping.getYaopingMingzi()+"',yaopingDanwei='"+yaoping.getYaopingDanwei()
+			sql ="update yaoping set yaopingBianhao= '" + yaoping.getYaopingBianhao() + "', yaopingMingzi= '"+yaoping.getYaopingMingzi()+"',yaopingDanwei='"+yaoping.getYaopingDanwei()
 			+"',youxiaoqi='"+yaoping.getYouxiaoqi()+"',jingjia= '"+yaoping.getJingjia()+"',gongyingshangMingzi='"+yaoping.getGongyingshangMingzi()+"',shuliang='"+yaoping.getShuliang()+"' where yaopingID= '"+yaoping.getYaopingID()+"'";
 			System.out.print(sql);
 			Connection connection = ProjectShare.getDbPool().getConnection();
@@ -93,6 +95,7 @@ public class YaopingDao {
 		}
 	}
 	
+	// 删除
 	public static boolean delete(int yaopingID){
 		try {
 			//开启数据库链接
@@ -114,6 +117,7 @@ public class YaopingDao {
 		}
 	}
 	
+	// 查找所有
 	public static List<Yaoping> findALL(){
 		try {
 			List<Yaoping> list = new ArrayList<>();
@@ -144,6 +148,7 @@ public class YaopingDao {
 			return null;
 		}
 	}
+	
 	//根据药品名字查询     被谁调用，返回：yaopingController的findOne方法
 	public static Yaoping findByYaopingMingzi(String yaopingMingzi){
 		Yaoping yaoping = null;
@@ -166,6 +171,7 @@ public class YaopingDao {
 			return null;
 		}
 	}
+	
 	//什么意思，为什么有两个？？？？？？？？？？？？？？？？？？？？？？？？？？？	
 	//根据药品ID查询   生成库存记录是，根据库存的药品ID，找出yaoping这个类，然后在更新数量    KucunController。save方法调用
 	public static Yaoping findByYaopingID(int yaopingID){
@@ -189,36 +195,6 @@ public class YaopingDao {
 			return null;
 		}
 	}
-	
-	
-	public static List<Yaoping> findByCangkuID(int cangkuID) {
-		try {
-			List<Yaoping> list = new ArrayList<>();
-			//开启数据库链接
-			Connection connection = ProjectShare.getDbPool().getConnection();
-			String sql = "select * from yaoping where cangkuID ='" + cangkuID +"'";
-			//返回数据库结果集
-			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
-			//循环结果集，一个个填充入List<yaoping>
-			while(rs.next()){
-				//把结果集填入yaoping对象
-				Yaoping yaoping = converyaoping(rs);
-				//list添加
-				list.add(yaoping);
-			}
-			//结果集关闭
-			rs.close();
-			//数据量链接关闭
-			ProjectShare.getDbPool().closeConnection(connection);
-			
-			return list;//找到所有药品列表，返回给YaopingController
-			//异常
-		} catch (Exception e) {
-			// TODO: handle exception
-			ProjectShare.log("yaoping.findALL error: "+e.getMessage());
-			return null;
-		}	}
-	
 	
 	/**
 	 * 出入库时，修改药品的number
@@ -251,5 +227,4 @@ public class YaopingDao {
 			return false;
 		}
 	}
-	
 }

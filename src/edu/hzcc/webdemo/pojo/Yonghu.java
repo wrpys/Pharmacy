@@ -1,5 +1,8 @@
 package edu.hzcc.webdemo.pojo;
 
+/**
+ * 用户表
+ */
 public class Yonghu {
 
 	private int yonghuID;

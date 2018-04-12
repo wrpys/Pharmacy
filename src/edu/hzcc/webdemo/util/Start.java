@@ -1,7 +1,5 @@
 package edu.hzcc.webdemo.util;
 
-import edu.hzcc.webdemo.dao.CaigoudingdangDao;
-import edu.hzcc.webdemo.dao.XiaoshoudingdangDao;
 
 public class Start {
 

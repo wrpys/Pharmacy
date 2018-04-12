@@ -3,15 +3,13 @@ package edu.hzcc.webdemo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.json.JSONObject;
 import edu.hzcc.webdemo.dao.KucunDao;
 import edu.hzcc.webdemo.dao.RukuandanDao;
-import edu.hzcc.webdemo.dao.XiaoshoufahuoDao;
 import edu.hzcc.webdemo.dao.ZhanghuDao;
 import edu.hzcc.webdemo.pojo.Kucun;
 import edu.hzcc.webdemo.pojo.Rukuandan;
-import edu.hzcc.webdemo.pojo.Xiaoshoufahuo;
 import edu.hzcc.webdemo.util.ControllerBase;
-import net.sf.json.JSONObject;
 /**
  * 收款单
  * @author Administrator
@@ -58,13 +56,16 @@ public class RukuandanController extends ControllerBase{
 		if(RukuandanDao.save(rukuandan)){
 			//如果这次更新是结算更新的话，Zhuantai=1是结算，就在库存生成一条记录
 			if(rukuandan.getZhuantai()>0){
-				Xiaoshoufahuo xiaoshoufahuo=XiaoshoufahuoDao.findOne(rukuandan.getXiaoshoufahuoID());
+//				Xiaoshoufahuo xiaoshoufahuo=XiaoshoufahuoDao.findOne(rukuandan.getXiaoshoufahuoID());//TODO
 		
 			Kucun kucun=new Kucun();
 			kucun.setZhuangtai(2);
-			kucun.setRiqi(xiaoshoufahuo.getRiqi());
-			kucun.setShuliang(xiaoshoufahuo.getShuliang());
-			kucun.setYaopingID(xiaoshoufahuo.getYaopingID());
+//			kucun.setRiqi(xiaoshoufahuo.getRiqi());
+//			kucun.setShuliang(xiaoshoufahuo.getShuliang());
+//			kucun.setYaopingDanwei(xiaoshoufahuo.getYaopingDanwei());
+//			kucun.setDingdanhao(xiaoshoufahuo.getXiaoshoudingdangID());
+//			kucun.setYaopingMingzi(xiaoshoufahuo.getGongyingshangMingzi());
+//			kucun.setYaopingID(xiaoshoufahuo.getYaopingID());
 			KucunDao.save(kucun);
 			//结算更新，账户余额+收款数，再更新账户
 			ZhanghuDao.updatezhanghuQianshu(1, ZhanghuDao.findOne(1).getQianshu()+rukuandan.getQianshu());

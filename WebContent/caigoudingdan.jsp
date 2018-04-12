@@ -28,7 +28,7 @@
                         <thead>
                         <tr role="row">
 							<th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
-      	   		采购订单编号
+      	   		订单编号
                             </th>
                            <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
     	      	药品编号
@@ -58,7 +58,7 @@
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
                                 状态
                             </th>
-                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label=""></th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">操作</th>
                         </tr>
                         </thead>
                         <tbody id="userList"></tbody>
@@ -75,105 +75,76 @@
     <form id="saveuserForm">
         <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
         	<tr>
-                <td><input type="text" name="caigoudingdangID" id="caigoudingdangID" value="" class="text ui-widget-content ui-corner-all"></td>
+                <td><label for="dingdanBianhao">采购订单编号</label></td>
+                <td><input type="text" name="dingdanBianhao" id="dingdanBianhao" value="" class="text ui-widget-content ui-corner-all"></td>
+                <input type="hidden" name="cls" id="cls" value="CaigoudingdanController"/>
+                <input type="hidden" name="mtd" id="mtd" value="save"/>
             </tr>
             <tr>
                 <td style="width: 80px;"><label for="duties">供应商</label></td>
                 <td>
-                    <select id="dialog-saveuser-formselete" name="gongyingshangID" data-placeholder="选择供应商" style="width: 200px;"></select>
+                    <select class="gongyingshang-list" name="gongyingshangID" data-placeholder="选择供应商" style="width: 170px;"></select>
                 </td>
             </tr>
-             <tr>
-                <td><label for="caigoudingdangID">采购订单编号</label></td>
-                <input type="hidden" name="cls" id="cls" value="CaigoufahuoController"/>
-                <input type="hidden" name="mtd" id="mtd" value="save"/>
-                <td><input type="text" name="caigoudingdangID" id="caigoudingdangID" value="" class="text ui-widget-content ui-corner-all"></td>
+            <tr>
+                <td><label for="yaopingID">药品</label></td>
+                <td>
+                	<select class="yaoping-list" name="yaopingID" data-placeholder="选择药品" style="width: 170px;"></select>
+                </td>
             </tr>
             <tr>
-                <td><label for="yaopingID">药品编号</label></td>
-                <td><input type="text" name="yaopingID" id="yaopingID" value="" class="text ui-widget-content ui-corner-all"></td>
+                <td><label for="cangkuID">仓库</label></td>
+                <td>
+                	<select class="cangku-list" name="cangkuID" data-placeholder="选择仓库" style="width: 170px;"></select>
+                </td>
             </tr>
             <tr>
-                <td><label for="yaopingMingzi">名称</label></td>               
-                <td><input type="text" name="yaopingMingzi" id="yaopingMingzi" value="" class="text ui-widget-content ui-corner-all"></td>
+                <td><label for="danjia">单价</label></td>
+                <td><input type="text" name="danjia" id="danjia" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
-         
-            <tr>
-                <td><label for="yaopingDanwei">单位</label></td>
-                <td><input type="text" name="yaopingDanwei" id="yaopingDanwei" value="" class="text ui-widget-content ui-corner-all"></td>
-            </tr>
-
             <tr>
                 <td><label for="shuliang"> 数量</label></td>
-                <td><textarea name="shuliang" id="shuliang" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
+                <td><input type="text" name="shuliang" id="shuliang" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
-             <tr>
-                <td><label for="zongjia"> 总价</label></td>
-                <td><textarea name="zongjia" id="zongjia" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
-            </tr>
-            <tr>
-                <td><label for="riqi"> 日期</label></td>
-                <td><textarea name="riqi" id="riqi" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
-            </tr>
-                                        <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
-                                状态
-                            </th>
         </table>
     </form>
 </div>
 <div id="dialog-updateuser-form" style="display: none;">
     <form id="updateuserForm">
         <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+             <tr>
+                <td><label for="dingdanBianhao">采购订单编号</label></td>
+                <input type="hidden" name="cls" id="cls" value="CaigoudingdanController"/>
+                <input type="hidden" name="mtd" id="mtd" value="update"/>
+				<input type="hidden" name="dingdanID" id="dingdanID"/>
+                <td><input type="text" name="dingdanBianhao" id="dialog-updateuser-formDingdanBianhao" value="" class="text ui-widget-content ui-corner-all"></td>
+            </tr>
             <tr>
-                <td style="width: 80px;"><label for="duties">供应商</label></td>
+                <td style="width: 80px;"><label for="gongyingshangID">供应商</label></td>
                 <td>
-				<select id="dialog-updateuser-formselete" name="gongyingshangID" data-placeholder="选择供应商" style="width: 200px;"></select>
+				<select id='dialog-updateuser-formgongyingshangID' class="gongyingshang-list" name="gongyingshangID" data-placeholder="选择供应商" style="width: 170px;"></select>
                 </td>
             </tr>
-             <tr>
-                <td><label for="caigoudingdangID">采购订单编号</label></td>
-                <input type="hidden" name="cls" id="cls" value="CaigoufahuoController"/>
-                <input type="hidden" name="mtd" id="mtd" value="update"/>
-				<input type="hidden" name="caigoufahuoID" id="caigoufahuoID"/>
-                <td><input type="text" name="caigoudingdangID" id="dialog-updateuser-formcaigoudingdangID" value="" class="text ui-widget-content ui-corner-all"></td>
+            <tr>
+                <td><label for="yaopingID">药品</label></td>
+                <td>
+                <select class="yaoping-list" id="dialog-updateuser-formyaopingID" name="yaopingID" data-placeholder="选择药品" style="width: 170px;"></select>
+                </td>
             </tr>
             <tr>
-                <td><label for="yaopingID">药品编号</label></td>
-                <td><input type="text" name="yaopingID" id="dialog-updateuser-formyaopingID" value="" class="text ui-widget-content ui-corner-all"></td>
+                <td><label for="cangkuID">仓库</label></td>               
+                <td>
+                <select class="cangku-list" id="dialog-updateuser-formcangkuID" name="cangkuID" data-placeholder="选择仓库" style="width: 170px;"></select>
+                </td>
             </tr>
             <tr>
-                <td><label for="yaopingMingzi">名称</label></td>               
-                <td><input type="text" name="yaopingMingzi" id="dialog-updateuser-formyaopingMingzi" value="" class="text ui-widget-content ui-corner-all"></td>
-            </tr>
-         
-            <tr>
-                <td><label for="yaopingDanwei">单位</label></td>
-                <td><input type="text" name="yaopingDanwei" id="dialog-updateuser-formyaopingDanwei" value="" class="text ui-widget-content ui-corner-all"></td>
-            </tr>
-     	   <tr>
-                <td><label for="drugsStandard">标准</label></td>
-                <td><input type="text" name="drugsStandard" id="dialog-updateuser-formdrugsStandard" value="" class="text ui-widget-content ui-corner-all"></td>
+                <td><label for="danjia">单价</label></td>
+                <td><input type="text" name="danjia" id="dialog-updateuser-formdanjia" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
             <tr>
                 <td><label for="shuliang"> 数量</label></td>
-                <td><textarea name="shuliang" id="dialog-updateuser-formshuliang" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
-            </tr>
-
-             <tr>
-                <td><label for="zongjia"> 总价</label></td>
-                <td><textarea name="zongjia" id="dialog-updateuser-formzongjia" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
-            </tr>
-            <tr>
-                <td><label for="riqi"> 日期</label></td>
-                <td><textarea name="riqi" id="dialog-updateuser-formriqi" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
-            </tr>
-            <tr>
-                <td style="width: 80px;"><label for="zhiwu">状态</label></td>
                 <td>
-                    <select id="complete" name="complete" data-placeholder="选择状态" style="width: 200px;">
-                    		<option value="0">未审核</option> 
-                    		<option value="1">审核</option>                    	
-                    </select>
+                <input type="text" name="shuliang" id="dialog-updateuser-formshuliang" value="" class="text ui-widget-content ui-corner-all">
                 </td>
             </tr>
         </table>
@@ -195,18 +166,17 @@
 	<td>{{#bold}}{{complete}}{{/bold}}</td>	
     <td>
         <div class="hidden-sm hidden-xs action-buttons">
-            <a class="green user-edit" href="#" data-id="{{caigoufahuoID}}"
+            <a class="green user-edit" href="#" data-id="{{dingdanID}}"
+												data-dingdanBianhao="{{dingdanBianhao}}"
 												data-yaopingID="{{yaopingID}}"
-												data-yaopingDanwei="{{yaopingDanwei}}"
-												data-yaopingMingzi="{{yaopingMingzi}}"
-											
+												data-danjia="{{danjia}}"
 												data-shuliang="{{shuliang}}"	
-												data-zongjia="{{zongjia}}"
-												data-riqi="{{riqi}}"
-												data-caigoudingdangID="{{caigoudingdangID}}">
+												data-cangkuID="{{cangkuID}}"
+												data-complete="{{complete}}"
+												data-gongyingshangID="{{gongyingshangID}}">
                 <i class="ace-icon fa fa-pencil bigger-100"></i>
             </a>
-             <a class="red user-delete" href="#" data-id="{{caigoufahuoID}}" >
+             <a class="red user-delete" href="#" data-id="{{dingdanID}}" data-complete="{{complete}}" >
                     <i class="ace-icon fa fa-trash-o bigger-100"></i>
              </a>
         </div>
@@ -215,13 +185,25 @@
 {{/userList}}
 </script>
 
-
+<!-- 供应商下拉列表 -->
 <script id="Template" type="x-tmpl-mustache">
-
 {{#businessList}}
 <option value="{{gongyingshangID}}">{{gongyingshangMingzi}}</option>
 {{/businessList}}
+</script>
 
+<!-- 药品下拉列表 -->
+<script id="yaopingTemplate" type="x-tmpl-mustache">
+{{#yaopingList}}
+<option value="{{yaopingID}}">{{yaopingMingzi}}</option>
+{{/yaopingList}}
+</script>
+
+<!-- 仓库下拉列表 -->
+<script id="cangkuTemplate" type="x-tmpl-mustache">
+{{#cangkuList}}
+<option value="{{cangkuID}}">{{cangkuMingzi}}</option>
+{{/cangkuList}}
 </script>
 
 <script type="text/javascript">
@@ -233,6 +215,10 @@ $(function () {
 
     var Template = $('#Template').html();
     Mustache.parse(Template);
+    var yaopingTemplate = $('#yaopingTemplate').html();
+    Mustache.parse(yaopingTemplate);
+    var cangkuTemplate = $('#cangkuTemplate').html();
+    Mustache.parse(cangkuTemplate);
     loadUserList();
     // 加载信息,并渲染
     function loadUserList() {
@@ -255,7 +241,7 @@ $(function () {
                          return "<span class='label label-sm label-success'>审核</span>";
                      }else if (status == '0') {
                          return "<span class='label label-sm label-success'>未审核</span>";
-                     } 
+                     }
              }
              }});
          $('#userList').html(rendered);
@@ -264,12 +250,15 @@ $(function () {
          
     $(".user-add").click(function () {
         $("#dialog-saveuser-form").dialog({
+        	height: 450,
+        	width: 450,
             modal: true,
-            title: "新增采购收货单",
+            title: "新增采购订单",
             open: function (event, ui) {
                 $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮
-               
-                saveuserrecursiveRenderDeptSelect();
+                gongyingshangSelect();
+                yaopingSelect();
+                cangkuSelect();
                 $("#saveuserForm")[0].reset();
             },
             buttons: {
@@ -287,36 +276,38 @@ $(function () {
 
     // 绑定相关点击事件
     function bindUserClick() {
-    	
         // 处理点击按钮
         $(".user-edit").click(function (e) {
-            var caigoufahuoID = $(this).attr("data-id"); // 选中的id
+        	var complete = $(this).attr("data-complete");
+        	if(complete != "0") {
+        		alert("该订单已经审核，无法修改！");
+        		return ;
+        	}
+            var dingdanID = $(this).attr("data-id"); // 选中的id
+			var dingdanBianhao = $(this).attr("data-dingdanBianhao"); 
 			var yaopingID = $(this).attr("data-yaopingID"); 
-			var yaopingDanwei = $(this).attr("data-yaopingDanwei"); 
-			var yaopingMingzi = $(this).attr("data-yaopingMingzi"); 
-			
+			var danjia = $(this).attr("data-danjia"); 
 			var shuliang = $(this).attr("data-shuliang"); 
-			var zongjia = $(this).attr("data-zongjia"); 
-			var riqi = $(this).attr("data-riqi"); 
-			var caigoudingdangID = $(this).attr("data-caigoudingdangID"); 
+			var cangkuID = $(this).attr("data-cangkuID"); 
+			var gongyingshangID = $(this).attr("data-gongyingshangID"); 
             $("#dialog-updateuser-form").dialog({
+            	height: 450,
+            	width: 450,
                 modal: true,
-                title: "编辑用户",
+                title: "修改采购订单",
                 open: function (event, ui) {
-                	updateuserrecursiveRenderDeptSelect();
+                	gongyingshangSelect();
+                	yaopingSelect();
+                	cangkuSelect();
                     $("#updateuserForm")[0].reset();
                     $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮
-                   $("#dialog-updateuser-formyaopingID").val(yaopingID);
-				   $("#dialog-updateuser-formyaopingDanwei").val(yaopingDanwei);
-				   $("#dialog-updateuser-formyaopingMingzi").val(yaopingMingzi);
-		
+                   $("#dingdanID").val(dingdanID);
+				   $("#dialog-updateuser-formDingdanBianhao").val(dingdanBianhao);
+				   $("#dialog-updateuser-formyaopingID").val(yaopingID);
+				   $("#dialog-updateuser-formdanjia").val(danjia);
 				   $("#dialog-updateuser-formshuliang").val(shuliang);
-				   $("#dialog-updateuser-formzongjia").val(zongjia);
-				   $("#dialog-updateuser-formriqi").val(riqi);
-				   $("#dialog-updateuser-formcaigoudingdangID").val(caigoudingdangID);
-				   $("#caigoufahuoID").val(caigoufahuoID);
-				  
-                    
+				   $("#dialog-updateuser-formcangkuID").val(cangkuID);
+				   $("#dialog-updateuser-formgongyingshangID").val(gongyingshangID);
                 },
                 buttons: {
                     "更新": function (e) {
@@ -329,22 +320,25 @@ $(function () {
             });
         });
 
-		            // 处理点击[删除]按钮
+		// 处理点击[删除]按钮
         $(".user-delete").click(function (e) {
             e.preventDefault();
             e.stopPropagation(); // 此处必须要取消冒泡,因为是个递归结构,冒泡的话会让一个点击被响应多个
-            var caigoufahuoID = $(this).attr("data-id");
+            var complete = $(this).attr("data-complete");
+        	if(complete != "0") {
+        		alert("该订单已经审核，无法删除！");
+        		return ;
+        	}
+            var dingdanID = $(this).attr("data-id");
             if (confirm("确定要删除吗?")) {
                 $.ajax({
                     url: "${pageContext.request.contextPath }/cs",
                     data: {
-                    	cls:'CaigoufahuoController',mtd:'delete',
-                    	caigoufahuoID: caigoufahuoID
+                    	cls:'CaigoudingdanController',mtd:'delete',
+                    	dingdanID: dingdanID
                     },
                     success: function () {
-                        
-                            loadUserList();
-                        
+                        loadUserList();
                     }
                 });
             }
@@ -357,11 +351,9 @@ $(function () {
             data: $("#saveuserForm").serializeArray(),
             type: 'POST',
             success: function () {
-            	
-            	   $("#dialog-saveuser-form").dialog("close");
-            	   loadUserList();
-                    
-             
+            	alert("添加成功！");
+           	   $("#dialog-saveuser-form").dialog("close");
+           	   loadUserList();
             }
         });
     }
@@ -372,43 +364,54 @@ $(function () {
             data: $("#updateuserForm").serializeArray(),
             type: 'POST',
             success: function () {
-            	
+            		alert("修改成功！");
             	   $("#dialog-updateuser-form").dialog("close");
             	   loadUserList();
-                    
-             
             }
         });
     }
-  //加载保存和修改弹出框的供应商下拉信息       
-    function saveuserrecursiveRenderDeptSelect() {
+  	//加载保存和修改弹出框的供应商下拉信息 
+    function gongyingshangSelect() {
 		$.ajax({
 			url: "${pageContext.request.contextPath }/cs",
 			data:{cls:'GongyingshangController',mtd:'findAll'},
 			type: 'POST',
+			async: false,
 			success: function (result) {
-				
 				var rendered = Mustache.render(Template, {"businessList": result.gongyingshang});
-		         $('#dialog-saveuser-formselete').html(rendered);
+		         $('.gongyingshang-list').html(rendered);
 			}
 		});
-	   
-    }    
+    }
+  	
+  	//加载保存和修改弹出框的药品下拉信息 
+    function yaopingSelect() {
+		$.ajax({
+			url: "${pageContext.request.contextPath }/cs",
+			data:{cls:'YaopingController',mtd:'findAll'},
+			type: 'POST',
+			async: false,
+			success: function (result) {
+				var rendered = Mustache.render(yaopingTemplate, {"yaopingList": result.yaopingList});
+		         $('.yaoping-list').html(rendered);
+			}
+		});
+    }
+  	
+  	//加载保存和修改弹出框的仓库下拉信息 
+    function cangkuSelect() {
+		$.ajax({
+			url: "${pageContext.request.contextPath }/cs",
+			data:{cls:'CangkuController',mtd:'findAll'},
+			type: 'POST',
+			async: false,
+			success: function (result) {
+				var rendered = Mustache.render(cangkuTemplate, {"cangkuList": result.cangku});
+		         $('.cangku-list').html(rendered);
+			}
+		});
+    }
   
-  //加载保存和修改弹出框的供应商下拉信息       
-    function updateuserrecursiveRenderDeptSelect() {
-		$.ajax({
-			url: "${pageContext.request.contextPath }/cs",
-			data:{cls:'GongyingshangController',mtd:'findAll'},
-			type: 'POST',
-			success: function (result) {
-				
-				var rendered = Mustache.render(Template, {"businessList": result.gongyingshang});
-		         $('#dialog-updateuser-formselete').html(rendered);
-			}
-		});
-	   
-    }    
  });
 </script>
 </body>

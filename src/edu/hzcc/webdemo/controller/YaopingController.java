@@ -7,8 +7,7 @@ import edu.hzcc.webdemo.dao.YaopingDao;
 import edu.hzcc.webdemo.pojo.Yaoping;
 import edu.hzcc.webdemo.util.ControllerBase;
 import net.sf.json.JSONObject;
-/*
- 
+/**
  * 药品的页面交互，页面根据cls:'YaopingController',mtd:'findAll'来调用
  * 结果返回页面
  */
@@ -28,7 +27,6 @@ public class YaopingController extends ControllerBase{
 		writeJson(jsonObject.toString());
 		return;
 	}
-
 	
 	/**
 	 * 根据yaopingMingzi寻找该药品，查找在前台的哪里jsp和html？？？？？？？？？？？？？？？、

@@ -76,25 +76,11 @@
 							<b class="arrow"></b>
 						</li>
 						<li class="">
-							<a class="popstyle user-add" href="caigoudingdangbaocun.jsp" target="_blank"> 
+							<a class="popstyle user-add" href="caigoushouhuo.jsp" target="_blank"> 
 								<i class="menu-icon fa fa-caret-right"></i> 采购收货
 							</a> 
 							<b class="arrow"></b>
 						</li>
-						<li class="">
-							<a class="popstyle user-add" href="caigoudingdangbaocun.jsp" target="_blank"> 
-								<i class="menu-icon fa fa-caret-right"></i> 新增采购订货单
-							</a> 
-							<b class="arrow"></b>
-						</li>
-						<li class=""><a class="popstyle" href="caigoufahuobaocun.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								新增 采购收货单
-						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="caigoufahuo.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								采购收货单
-						</a> <b class="arrow"></b></li>
 					</ul></li>
 
 				<li class=""><a href="#" class="dropdown-toggle"> <i
@@ -104,18 +90,13 @@
 
 					<ul class="submenu">
 						<li class=""><a class="popstyle"
-							href="xiaoshoudingdangbaocun.jsp" target="_blank"> <i
-								class="menu-icon fa fa-caret-right"></i> 新增销售订货单
+							href="xiaoshoudingdan.jsp" target="_blank"> <i
+								class="menu-icon fa fa-caret-right"></i> 销售订单
 						</a> <b class="arrow"></b></li>
 						<li class=""><a class="popstyle"
-							href="xiaoshoufahuobaocun.jsp" target="_blank"> <i
-								class="menu-icon fa fa-caret-right"></i> 新增销售出货单
+							href="xiaoshouchuhuo.jsp" target="_blank"> <i
+								class="menu-icon fa fa-caret-right"></i> 销售出货
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="xiaoshoufahuo.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								销售出货单
-						</a> <b class="arrow"></b></li>
-
 					</ul></li>
 
 				<li class=""><a href="" class="dropdown-toggle"> <i
@@ -144,15 +125,14 @@
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 							财务管理 </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
-
 					<ul class="submenu">
-						<li class=""><a class="popstyle" href="rukuandan.jsp"
+						<li class=""><a class="popstyle" href="shoukuanshenhe.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								收款单
+								收款审核
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="fukuandan.jsp"
+						<li class=""><a class="popstyle" href="fukuanshenhe.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								付款单
+								付款审核
 						</a> <b class="arrow"></b></li>
 						<li class=""><a class="popstyle" href="zhanghu.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
@@ -190,23 +170,28 @@
 
 				<li class="nolook"><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa menu-icon fa fa-flask "></i> <span
-						class="menu-text"> 仓库统计</span> <b class="arrow fa fa-angle-down"></b>
+						class="menu-text"> 统计决策</span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
 					<ul class="submenu">
+						<li class=""><a class="popstyle" href="caigouhuizongshenhe.jsp"
+							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
+								采购汇总审核
+						</a> <b class="arrow"></b></li>
+						<li class=""><a class="popstyle" href="xiaoshouhuizongshenhe.jsp"
+							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
+								销售汇总审核
+						</a> <b class="arrow"></b></li>
+						<li class=""><a class="popstyle" href="cangkutongji.jsp"
+							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
+								仓库统计
+						</a> <b class="arrow"></b></li>
 
-						<li class=""><a class="popstyle" href="caigoudingdang.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								采购订货单汇总表
-						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="xiaoshoudingdang.jsp"
-							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								销售订货单汇总表
-						</a> <b class="arrow"></b></li>
 						<li class=""><a class="popstyle" href="kucunhuizong.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								仓库汇总表
 						</a> <b class="arrow"></b></li>
+						
 					</ul></li>
 
 				<li class=""><a href="#" class="dropdown-toggle"> <i
