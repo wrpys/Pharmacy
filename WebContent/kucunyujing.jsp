@@ -55,7 +55,7 @@
 <script id="userListTemplate" type="x-tmpl-mustache">
 {{#userList}}
 <tr role="row" class="user-name odd" data-id="{{durgsID}}"><!--even -->
-    <td>{{yaopingID}}</a></td>
+    <td>{{yaoping.yaopingBianhao}}</a></td>
     <td>{{yaoping.yaopingMingzi}}</td>
     <td>{{yaoping.yaopingDanwei}}</td>
 	<td>{{kucun.shuliang}}</td>

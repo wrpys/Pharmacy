@@ -70,21 +70,20 @@ public class KucunDao {
 			if (kucun.getKucunID() > 0) {
 				// 执行修改
 				sql = "update kucun set yaopingID= '" + kucun.getYaopingID()
-						+ "',yaopingMingzi='" + kucun.getYaopingMingzi()
-						+ "',yaopingDanwei='" + kucun.getYaopingDanwei()
-						+ "',dingdanhao='" + kucun.getDingdanhao()
+						+ "',cangkuID='" + kucun.getCangKuID()
+						/*+ "',dingdanID='" + kucun.getDingdanID()*/
 						+ "',shuliang='" + kucun.getShuliang() + "',riqi='"
 						+ kucun.getRiqi() + "',zhuangtai="
 						+ kucun.getZhuangtai() + " where kucunID="
 						+ kucun.getKucunID();
 			} else {
 				// 执行新增
-				sql = "insert into kucun(yaopingID,yaopingMingzi,dingdanhao,yaopingDanwei,shuliang,riqi,zhuangtai)";
+				sql = "insert into kucun(yaopingID,cangkuID,dingdanID,shuliang,riqi,zhuangtai)";
 				sql += " values('" + kucun.getYaopingID() + "','"
-						+ kucun.getYaopingMingzi() + "','"
-						+ kucun.getDingdanhao() + "','"
-						+ kucun.getYaopingDanwei() + "','"
-						+ kucun.getShuliang() + "','" + kucun.getRiqi() + "',"
+						+ kucun.getCangKuID() + "','"
+						+ kucun.getDingdanID() + "','"
+						+ kucun.getShuliang() + "','"
+						+ kucun.getRiqi() + "','"
 						+ kucun.getZhuangtai() + ")";
 
 			}

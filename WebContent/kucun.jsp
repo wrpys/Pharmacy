@@ -144,7 +144,7 @@
 <script id="userListTemplate" type="x-tmpl-mustache">
 {{#userList}}
 <tr role="row" class="user-name odd" data-id="{{kucunID}}"><!--even -->
-    <td>{{yaopingID}}</a></td>
+    <td>{{yaoping.yaopingBianhao}}</a></td>
     <td>{{yaoping.yaopingMingzi}}</td>
     <td>{{yaoping.yaopingDanwei}}</td>
     <td>{{shuliang}}</td>
@@ -154,6 +154,7 @@
         <div class="hidden-sm hidden-xs action-buttons">
             <a class="green user-edit" href="#" data-yaopingID="{{yaopingID}}"
  												data-yaopingMingzi="{{yaoping.yaopingMingzi}}"
+ 												data-yaopingBianhao="{{yaoping.yaopingBianhao}}"
  												data-yaopingDanwei="{{yaoping.yaopingDanwei}}"
  												data-shuliang="{{shuliang}}"
  												data-riqi="{{riqi}}"
@@ -246,7 +247,7 @@ $(function () {
 										"data-cangkuMingzi");
 								var cangkuID = $(this).attr("data-cangkuID");
 								var kucunID = $(this).attr("data-kucunID");
-								var dingdanID = $(this).attr("data-dingdanID");
+								var dingdanID = $(this).attr("data-yaopingBianhao");
 								var yaopingID = $(this).attr("data-yaopingID");
 								var yaopingDanwei = $(this).attr(
 										"data-yaopingDanwei");

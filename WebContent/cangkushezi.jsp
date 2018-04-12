@@ -108,13 +108,14 @@
 <tr role="row" class="user-name odd" data-id="{{id}}"><!--even -->
     <td><a href="#" class="user-edit" data-id="{{id}}">{{id}}</a></td>
     <td>{{cangkuMingzi}}</td>
-    <td>{{yaopingID}}</td>
+    <td>{{yaoping.yaopingBianhao}}</td>
     <td>{{zuishaoshuliang}}</td>
 	
     <td>
         <div class="hidden-sm hidden-xs action-buttons">
             <a class="green user-edit" href="#" data-id="{{id}}"
 			data-yaopingID="{{yaopingID}}"
+			data-yaopingBianhao="{{yaoping.yaopingBianhao}}"
 			data-zuishaoshuliang="{{zuishaoshuliang}}">
                 <i class="ace-icon fa fa-pencil bigger-100"></i>
             </a>

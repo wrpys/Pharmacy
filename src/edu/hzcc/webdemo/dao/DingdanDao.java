@@ -31,6 +31,7 @@ public class DingdanDao {
 		dingdan.setRiqi(rs.getString("riqi"));
 		dingdan.setGongyingshangID(rs.getInt("gongyingshangID"));
 		dingdan.setKehuID(rs.getInt("kehuID"));
+		dingdan.setDingdanleixing(rs.getInt("dingdanleixing"));
 		dingdan.setCangkuID(rs.getInt("cangkuID"));
 		dingdan.setComplete(rs.getInt("complete"));
 		// 药品详情
