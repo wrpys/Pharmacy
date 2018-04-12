@@ -1,15 +1,14 @@
 package edu.hzcc.webdemo.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import edu.hzcc.webdemo.dao.DingdanDao;
 import edu.hzcc.webdemo.dao.KucunDao;
-import edu.hzcc.webdemo.dao.YaopingDao;
 import edu.hzcc.webdemo.pojo.Dingdan;
 import edu.hzcc.webdemo.pojo.Kucun;
-import edu.hzcc.webdemo.pojo.Yaoping;
 import edu.hzcc.webdemo.util.ControllerBase;
 import net.sf.json.JSONObject;
 /**
@@ -49,41 +48,6 @@ public class KucunController extends ControllerBase{
 		System.out.println("kucunController.findAll() end");
 		return;
 	}
-////下面除了update与save都解释下，就回答每段功能是被谁调用，返回到哪里？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？	
-//	/*
-//	 * 采购订单存余数
-//	 */
-//	public void findDetail(){
-//		System.out.println("kucunController.findDetail()");
-//		List<Kucun> kucunDetailList=new ArrayList<>();
-//		kucunDetailList=KucunDao.findDetail();
-//		JSONObject jsonObject = new JSONObject();
-//		jsonObject.put("kucunDetailList", kucunDetailList);
-//		writeJson(jsonObject.toString());
-//		return;
-//	}
-	
-	public void save() {
-		Kucun kucun=new Kucun();
-		kucun.setYaopingID(getParameterInt("yaopingID"));
-		kucun.setCangKuID(getParameterInt("cangkuID"));
-		kucun.setDingdanID(getParameterInt("dingdanID"));
-		kucun.setShuliang(getParameterInt("shuliang"));
-		kucun.setRiqi((new Date()).toString());
-		kucun.setZhuangtai(1);//0未完成 1已完成
-		System.out.println(kucun.toString());
-		if(KucunDao.save(kucun)){
-			Yaoping yaoping=YaopingDao.findByYaopingID(kucun.getYaopingID());
-			if(yaoping!=null){
-				if(kucun.getZhuangtai()==1){
-					YaopingDao.updateNumber(yaoping.getYaopingID(), yaoping.getShuliang()+kucun.getShuliang());
-				}
-				if(kucun.getZhuangtai()==2){
-					YaopingDao.updateNumber(yaoping.getYaopingID(), yaoping.getShuliang()-kucun.getShuliang());
-				}
-			}
-		}
-	}
 	
 	public void update() throws Exception{
 		Kucun kucun=new Kucun();
@@ -102,16 +66,17 @@ public class KucunController extends ControllerBase{
 		//定义一个json格式
 		JSONObject jsonObject = new JSONObject();
 		if(churuku.equals("出库")) {
-			if(cunzaiKucun.getShuliang()>shuliang) {
+			if(null!=cunzaiKucun && cunzaiKucun.getKucunID()>0  && cunzaiKucun.getShuliang()>shuliang) {
 				xianzaishuliang =cunzaiKucun.getShuliang()-shuliang;
 			}else {
 				//把kucun列表填入json
-				jsonObject.put("message", "库存数量不足!");
+				jsonObject.put("message", "库存不存在或者数量不足!");
 				//原路返回kucun列表，用writeJson返回Json数据名字为kucun
 				writeJson(jsonObject.toString());
 				return;
 			}
 		}else {
+			//入库
 			xianzaishuliang = cunzaiKucun.getShuliang()+shuliang;
 		}
 		kucun.setYaopingID(getParameterInt("yaopingID"));
@@ -119,10 +84,11 @@ public class KucunController extends ControllerBase{
 		kucun.setCangKuID(getParameterInt("cangkuID"));
 		kucun.setDingdanID(dingdanID);
 		kucun.setShuliang(xianzaishuliang);
-		kucun.setRiqi((new Date()).toString());
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		kucun.setRiqi(sdf.format(date));
 		kucun.setZhuangtai(1);//0未完成 1已完成
 		KucunDao.save(kucun);
-		
 		Dingdan dingdan = new Dingdan();
 		dingdan.setDingdanID(dingdanID);
 		Dingdan temp = DingdanDao.findDingdanByPK(dingdan);
@@ -134,27 +100,25 @@ public class KucunController extends ControllerBase{
 		writeJson(jsonObject.toString());
 	}
 	
-	
-//	/**
-//	 * 根据订单号查找
-//	 */
-//	public void findALLByOrderID(){
-//		System.out.println("kucunController.findALLByOrderID()");
-//		List<Kucun> kucunBydingdanhao=new ArrayList<>();
-//		kucunBydingdanhao=KucunDao.findALLBydingdanhao(getParameterInt("dingdanhao"));
-//		JSONObject jsonObject = new JSONObject();
-//		jsonObject.put("kucunBydingdanhao", kucunBydingdanhao);
-//		writeJson(jsonObject.toString());
-//		return;
-//	}
-	
-//	public static void main(String[] args) {
-//		ProjectShare.initDatabasePool();
-//
-//		List<kucunSum> kucunSum=new ArrayList<>();
-//		kucunSum=kucunDao.findSum();
-//		JSONObject jsonObject = new JSONObject();
-//		jsonObject.put("kucunSum", kucunSum);
-//		System.out.println(jsonObject.toString());
-//	}
+	/*public void save() {
+	Kucun kucun=new Kucun();
+	kucun.setYaopingID(getParameterInt("yaopingID"));
+	kucun.setCangKuID(getParameterInt("cangkuID"));
+	kucun.setDingdanID(getParameterInt("dingdanID"));
+	kucun.setShuliang(getParameterInt("shuliang"));
+	kucun.setRiqi((new Date()).toString());
+	kucun.setZhuangtai(1);//0未完成 1已完成
+	System.out.println(kucun.toString());
+	if(KucunDao.save(kucun)){
+		Yaoping yaoping=YaopingDao.findByYaopingID(kucun.getYaopingID());
+		if(yaoping!=null){
+			if(kucun.getZhuangtai()==1){
+				YaopingDao.updateNumber(yaoping.getYaopingID(), yaoping.getShuliang()+kucun.getShuliang());
+			}
+			if(kucun.getZhuangtai()==2){
+				YaopingDao.updateNumber(yaoping.getYaopingID(), yaoping.getShuliang()-kucun.getShuliang());
+			}
+		}
+	}
+}*/
 }

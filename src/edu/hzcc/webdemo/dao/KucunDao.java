@@ -84,7 +84,7 @@ public class KucunDao {
 						+ kucun.getDingdanID() + "','"
 						+ kucun.getShuliang() + "','"
 						+ kucun.getRiqi() + "','"
-						+ kucun.getZhuangtai() + ")";
+						+ kucun.getZhuangtai() + "')";
 
 			}
 			System.out.print(sql);
