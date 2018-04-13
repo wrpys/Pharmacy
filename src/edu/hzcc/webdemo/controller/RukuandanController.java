@@ -19,10 +19,15 @@ public class RukuandanController extends ControllerBase{
 
 	public void findAll(){
 		System.out.println("rukuandanController.findAll()");
+		//定义一个Rukundan空的集合来存储数据
 		List<Rukuandan> rukuandanList=new ArrayList<>();
+		//查找所有的rukuandan信息
 		rukuandanList=RukuandanDao.findALL();
+		//创建json对象进行返回数据
 		JSONObject jsonObject = new JSONObject();
+		//将查询到的数据放到json对象中
 		jsonObject.put("rukuandanList", rukuandanList);
+		//将数据写会前端
 		writeJson(jsonObject.toString());
 		System.out.println(jsonObject.toString());
 		return;
@@ -30,6 +35,7 @@ public class RukuandanController extends ControllerBase{
 
 	public void save() {
 		System.out.println("rukuandanController.save()");
+		//构建rukuandan实例，下面操作设置实例信息，最后进行入库
 		Rukuandan rukuandan=new Rukuandan();
 		rukuandan.setKehuID(getParameterInt("kehuID"));
 		rukuandan.setRiqi(getParameter("riqi"));
@@ -43,6 +49,7 @@ public class RukuandanController extends ControllerBase{
 	
 	public void update() {
 		System.out.println("rukuandanController.save()");
+		//创建rukuandan实例，设置所有属性，进行更新操作
 		Rukuandan rukuandan=new Rukuandan();
 		rukuandan.setKehuID(getParameterInt("kehuID"));
 		rukuandan.setRiqi(getParameter("riqi"));
@@ -76,7 +83,9 @@ public class RukuandanController extends ControllerBase{
 	
 	public void delete(){
 		System.out.println("rukuandanController.delete()");
+		//获取rukuandan主键ID
 		int rukuandanID=getParameterInt("rukuandanID");
+		//进行删除操作
 		RukuandanDao.delete(rukuandanID);
 		return;
 	}

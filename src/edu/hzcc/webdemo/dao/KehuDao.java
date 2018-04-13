@@ -105,7 +105,7 @@ public class KehuDao {
 			while(rs.next()){
 				//把结果集填入Kehu对象
 				Kehu kehu = converkehu(rs);
-				//list添加然后去了哪？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+				//list添加然后去了哪？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？--->在return中返回出去
 				list.add(kehu);
 				
 			}

@@ -163,7 +163,7 @@ public class ZhanghuDao {
 		}
 	}
 	/*
-	 * 通过账户ID需要一个账户，什么意思？？？？？？？？？？？？？？？根据账户ID找到账户，用于付款和收款时，修改账户余款
+	 * 通过账户ID需要一个账户，什么意思？？？？？？？？？？？？？？？----->根据账户ID找到账户，用于付款和收款时，修改账户余款
 	 */
 	public static Zhanghu findOne(int ID){
 		Zhanghu zhanghu=new Zhanghu();

@@ -15,7 +15,9 @@ public class CangkusheziController extends ControllerBase{
 
 	public void findAll() {
 		System.out.println("cangkusheziController.getALL()");
+		//创建Cangkushezi空对象
 		List<Cangkushezi> cangkushezi=new ArrayList<>();
+		//获取cangkushezi列表
 		cangkushezi=CangkusheziDao.findALL();
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("cangkushezi", cangkushezi);
@@ -33,19 +35,23 @@ public class CangkusheziController extends ControllerBase{
 	
 	public void save() {
 		System.out.println("cangkusheziController.save()");
+		//创建Cangkushezi空对象并设置数据
 		Cangkushezi cangkushezi=new Cangkushezi();
 		cangkushezi.setCangkuID(getParameterInt("cangkuID"));
 		cangkushezi.setYaopingID(getParameterInt("yaopingID"));
 		cangkushezi.setZuishaoshuliang(getParameterInt("zuishaoshuliang"));
+		//调用cangkushezidao并保存设置的对象
 		CangkusheziDao.save(cangkushezi);
 	}
 	public void update() {
+		//创建Cangkushezi空对象并设置数据
 		System.out.println("cangkusheziController.save()");
 		Cangkushezi cangkushezi=new Cangkushezi();
 		cangkushezi.setCangkuID(getParameterInt("cangkuID"));
 		cangkushezi.setYaopingID(getParameterInt("yaopingID"));
 		cangkushezi.setZuishaoshuliang(getParameterInt("zuishaoshuliang"));
 			cangkushezi.setId(getParameterInt("Cangkusheziid"));
+		//cangkushezidao并更新设置的对象
 		CangkusheziDao.save(cangkushezi);
 	}
 }

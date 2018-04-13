@@ -88,6 +88,7 @@ public class YaopingController extends ControllerBase{
 	
 	public void save() {
 		System.out.println("yaopingController.save()");
+		//创建yaoping实例对象，并设置对象信息
 		Yaoping yaoping=new Yaoping();
 		//getParameter("yaopingMingzi")获取页面的传来值yaopingMingzi
 		 // "yaopingMingzi"要和页面的Input的name="yaopingMingzi"一样
@@ -103,6 +104,7 @@ public class YaopingController extends ControllerBase{
 	}
 	public void update() {
 		System.out.println("yaopingController.update()");
+		//创建yaoping实例对象，并设置对象信息
 		Yaoping yaoping=new Yaoping();
 		//getParameter("yaopingMingzi")获取页面的传来值yaopingMingzi
 		 // "yaopingMingzi"要和页面的Input的name="yaopingMingzi"一样
