@@ -36,7 +36,7 @@
         仓库
                             </th>
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
-         药品编号
+         药品名称
                             </th>
 
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
@@ -64,10 +64,10 @@
             </tr>
 	
 			<tr>
-                <td><label for="yaopingID">药品编号</label></td>
+                <td><label for="yaopingID">药品</label></td>
                  <input type="hidden" name="cls" id="cls" value="CangkusheziController"/>
                 	<input type="hidden" name="mtd" id="mtd" value="save"/>
-                <td><input type="text" name="yaopingID" id="yaopingID" value="" class="text ui-widget-content ui-corner-all"></td>
+                <td><select class="yaoping-list" name="yaopingID" id="yaopingID"  data-placeholder="选择药品" style="width: 170px;"></select></td>
             </tr>
 
             <tr>
@@ -89,11 +89,12 @@
             </tr>
 	
 			<tr>
-                <td><label for="yaopingID">药品编号</label></td>
+                <td><label for="yaopingID">药品</label></td>
                  <input type="hidden" name="cls" id="cls" value="CangkusheziController"/>
                 <input type="hidden" name="mtd" id="mtd" value="update"/>
 				<input type="hidden" name="Cangkusheziid" id="Cangkusheziid" />
-                <td><input type="text" name="yaopingID" id="updateuseryaopingID" value="" class="text ui-widget-content ui-corner-all"></td>
+                <td>
+                <select class="yaoping-list" name="yaopingID" id="updateuseryaopingID"  data-placeholder="选择药品" style="width: 170px;"></select></td>
             </tr>
                 <td><label for="zuishaoshuliang">最少数量</label></td>
                 <td><input type="text" name="zuishaoshuliang" id="updateuserzuishaoshuliang" value="" class="text ui-widget-content ui-corner-all"></td>
@@ -137,6 +138,13 @@
 </select>
 </script>
 
+<!-- 药品下拉列表 -->
+<script id="yaopingTemplate" type="x-tmpl-mustache">
+{{#yaopingList}}
+<option value="{{yaopingID}}">{{yaopingMingzi}}</option>
+{{/yaopingList}}
+</script>
+
 
 <script type="text/javascript">
 $(function () {
@@ -148,7 +156,8 @@ $(function () {
 
     var Template = $('#Template').html();
     Mustache.parse(Template);
-	
+    var yaopingTemplate = $('#yaopingTemplate').html();
+    Mustache.parse(yaopingTemplate);
 
     loadUserList();
     // 加载信息,并渲染
@@ -175,9 +184,8 @@ $(function () {
             title: "新增",
             open: function (event, ui) {
                 $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮
-				
-                
                 $("#saveuserForm")[0].reset();
+                yaopingSelect();
 				saveuserrecursiveRenderDeptSelect();
             },
             buttons: {
@@ -210,8 +218,9 @@ $(function () {
                     $(".ui-dialog-titlebar-close", $(this).parent()).hide(); // 点开时隐藏关闭按钮
 					$("#updateuserForm")[0].reset();
 					updateuserrecursiveRenderDeptSelect();
-					
-                   $("#Cangkusheziid").val(Cangkusheziid); $("#updateuseryaopingID").val(yaopingID);
+					yaopingSelect();
+                   $("#Cangkusheziid").val(Cangkusheziid); 
+                   		$("#updateuseryaopingID").val(yaopingID);
 					 $("#updateuserzuishaoshuliang").val(zuishaoshuliang);
 		
                     
@@ -307,6 +316,20 @@ $(function () {
 		});
 	   
     }    
+  
+	//加载保存和修改弹出框的药品下拉信息 
+    function yaopingSelect() {
+		$.ajax({
+			url: "${pageContext.request.contextPath }/cs",
+			data:{cls:'YaopingController',mtd:'findAll'},
+			type: 'POST',
+			async: false,
+			success: function (result) {
+				var rendered = Mustache.render(yaopingTemplate, {"yaopingList": result.yaopingList});
+		         $('.yaoping-list').html(rendered);
+			}
+		});
+    }
 	 
  });
 </script>
