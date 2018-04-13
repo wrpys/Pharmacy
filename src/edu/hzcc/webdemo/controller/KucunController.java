@@ -1,13 +1,8 @@
 package edu.hzcc.webdemo.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import edu.hzcc.webdemo.dao.DingdanDao;
 import edu.hzcc.webdemo.dao.KucunDao;
-import edu.hzcc.webdemo.pojo.Dingdan;
 import edu.hzcc.webdemo.pojo.Kucun;
 import edu.hzcc.webdemo.util.ControllerBase;
 import net.sf.json.JSONObject;
@@ -17,8 +12,26 @@ import net.sf.json.JSONObject;
  * 结果返回页面
  */
 public class KucunController extends ControllerBase{
+	
+	
+	public void findAll() {
 
-	public void findAll(){
+		System.out.println("kucunController.findAll() start");
+		//定义一个空的kucun列表
+		List<Kucun> kucunList=KucunDao.findALLKucun();
+		//定义一个json格式
+		JSONObject jsonObject = new JSONObject();
+		//把kucun列表填入json
+		jsonObject.put("dingdanList", kucunList);
+		//原路返回kucun列表，用writeJson返回Json数据名字为kucun
+		writeJson(jsonObject.toString());
+		System.out.println(jsonObject.toString());
+		System.out.println("kucunController.findAll() end");
+		return;
+	}
+	
+	
+	/*public void findAll(){
 		System.out.println("kucunController.findAll() start");
 		//定义一个空的dingdan列表
 		List<Dingdan> dingdanList=new ArrayList<Dingdan>();
@@ -47,9 +60,9 @@ public class KucunController extends ControllerBase{
 		System.out.println(jsonObject.toString());
 		System.out.println("kucunController.findAll() end");
 		return;
-	}
+	}*/
 	
-	public void update() throws Exception{
+	/*public void update() throws Exception{
 		Kucun kucun=new Kucun();
 		//获取订单ID
 		int dingdanID = getParameterInt("dingdanID");
@@ -98,27 +111,6 @@ public class KucunController extends ControllerBase{
 		jsonObject.put("message", "操作成功!");
 		//原路返回kucun列表，用writeJson返回Json数据名字为kucun
 		writeJson(jsonObject.toString());
-	}
+	}*/
 	
-	/*public void save() {
-	Kucun kucun=new Kucun();
-	kucun.setYaopingID(getParameterInt("yaopingID"));
-	kucun.setCangKuID(getParameterInt("cangkuID"));
-	kucun.setDingdanID(getParameterInt("dingdanID"));
-	kucun.setShuliang(getParameterInt("shuliang"));
-	kucun.setRiqi((new Date()).toString());
-	kucun.setZhuangtai(1);//0未完成 1已完成
-	System.out.println(kucun.toString());
-	if(KucunDao.save(kucun)){
-		Yaoping yaoping=YaopingDao.findByYaopingID(kucun.getYaopingID());
-		if(yaoping!=null){
-			if(kucun.getZhuangtai()==1){
-				YaopingDao.updateNumber(yaoping.getYaopingID(), yaoping.getShuliang()+kucun.getShuliang());
-			}
-			if(kucun.getZhuangtai()==2){
-				YaopingDao.updateNumber(yaoping.getYaopingID(), yaoping.getShuliang()-kucun.getShuliang());
-			}
-		}
-	}
-}*/
 }

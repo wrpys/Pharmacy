@@ -29,16 +29,18 @@
                            aria-describedby="dynamic-table_info" style="font-size:14px">
                         <thead>
                         <tr role="row">
-                            <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
+<!--                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
          ID
-                            </th>
+                            </th> -->
                            <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
         仓库
                             </th>
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
          药品名称
                             </th>
-
+                        	<th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
+         药品编号
+                            </th>
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
         最少数量
                             </th>
@@ -107,8 +109,9 @@
 <script id="userListTemplate" type="x-tmpl-mustache">
 {{#userList}}
 <tr role="row" class="user-name odd" data-id="{{id}}"><!--even -->
-    <td><a href="#" class="user-edit" data-id="{{id}}">{{id}}</a></td>
+    <!-- <td><a href="#" class="user-edit" data-id="{{id}}">{{id}}</a></td> -->
     <td>{{cangkuMingzi}}</td>
+	<td>{{yaoping.yaopingMingzi}}</td>
     <td>{{yaoping.yaopingBianhao}}</td>
     <td>{{zuishaoshuliang}}</td>
 	
@@ -116,6 +119,7 @@
         <div class="hidden-sm hidden-xs action-buttons">
             <a class="green user-edit" href="#" data-id="{{id}}"
 			data-yaopingID="{{yaopingID}}"
+			data-yaopingMingzi="{{yaoping.yaopingMingzi}}"
 			data-yaopingBianhao="{{yaoping.yaopingBianhao}}"
 			data-zuishaoshuliang="{{zuishaoshuliang}}">
                 <i class="ace-icon fa fa-pencil bigger-100"></i>
@@ -238,8 +242,8 @@ $(function () {
 
         // 处理点击[删除部门]按钮
         $(".user-delete").click(function (e) {
-            e.preventDefault();
-            e.stopPropagation(); // 此处必须要取消冒泡,因为是个递归结构,冒泡的话会让一个点击被响应多个
+            //e.preventDefault();
+            //e.stopPropagation(); // 此处必须要取消冒泡,因为是个递归结构,冒泡的话会让一个点击被响应多个
             var Cangkusheziid = $(this).attr("data-id");
             if (confirm("确定要删除[" + Cangkusheziid + "]吗?")) {
                 $.ajax({
@@ -249,7 +253,7 @@ $(function () {
                     	id: Cangkusheziid
                     },
                     success: function () {
-                            showMessage("删除[" + Cangkusheziid + "]", "操作成功", true);
+                            //showMessage("删除[" + Cangkusheziid + "]", "操作成功", true);
                             loadUserList();
                         
                     }

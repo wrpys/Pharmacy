@@ -12,7 +12,7 @@
 
 <div class="page-header">
     <h1>
-       	仓库管理
+       	库存管理
     </h1>
 </div>
 <div class="main-content-inner">
@@ -20,7 +20,7 @@
     
         <div class="col-xs-12">
             <div class="table-header">
-                出入库列表&nbsp;&nbsp;
+                库存列表&nbsp;&nbsp;
                 <!-- <a class="green" href="#">
                     <i class="ace-icon fa fa-plus-circle orange bigger-130 user-add"></i>
                 </a> -->
@@ -43,17 +43,20 @@
                                  药品单位
                             </th>
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
-                                 数量
+                                 仓库名
+                            </th>
+                            <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
+                                 库存
                             </th>
                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
                                日期
                             </th>
-                            <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
+<!--                             <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">
                                 状态
-                            </th>
-                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">
+                            </th> -->
+<!--                             <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">
                                操作
-                            </th>
+                            </th> -->
                         </tr>
                         </thead>
                         <tbody id="userList"></tbody>
@@ -147,10 +150,11 @@
     <td>{{yaoping.yaopingBianhao}}</a></td>
     <td>{{yaoping.yaopingMingzi}}</td>
     <td>{{yaoping.yaopingDanwei}}</td>
+	<td>{{cangku.cangkuMingzi}}</td>
     <td>{{shuliang}}</td>
 	<td>{{riqi}}</td>
-	<td>{{#bold}}{{complete}}{{/bold}}</td>	
-    <td>
+	<!-- <td>{{#bold}}{{complete}}{{/bold}}</td>	 -->
+    <!-- <td>
         <div class="hidden-sm hidden-xs action-buttons">
             <a class="green user-edit" href="#" data-yaopingID="{{yaopingID}}"
  												data-yaopingMingzi="{{yaoping.yaopingMingzi}}"
@@ -164,10 +168,10 @@
 												data-dingdanID="{{dingdanID}}"
 												data-kucunID="{{kucun.kucunID}}"
 												data-dingdanleixing="{{dingdanleixing}}">
-                <i class="ace-icon fa fa-pencil bigger-100"></i>
+                <i class="ace-icon fa fa-pencil bigger-100"></i> 
             </a>
         </div>
-    </td>
+    </td>-->
 </tr>
 {{/userList}}
 </script>

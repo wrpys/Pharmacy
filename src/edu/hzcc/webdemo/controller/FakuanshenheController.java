@@ -1,12 +1,16 @@
 package edu.hzcc.webdemo.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import net.sf.json.JSONObject;
 import edu.hzcc.webdemo.dao.DingdanDao;
+import edu.hzcc.webdemo.dao.KucunDao;
 import edu.hzcc.webdemo.dao.ZhanghuDao;
 import edu.hzcc.webdemo.pojo.Dingdan;
+import edu.hzcc.webdemo.pojo.Kucun;
 import edu.hzcc.webdemo.pojo.Zhanghu;
 import edu.hzcc.webdemo.util.ControllerBase;
 
@@ -40,6 +44,8 @@ public class FakuanshenheController extends ControllerBase {
 		Dingdan dingdan = new Dingdan();
 		dingdan.setDingdanID(getParameterInt("dingdanID"));
 		dingdan.setComplete(getParameterInt("complete"));
+		//新增库存
+		saveKucun();
 		// 将采购收货的状态改为已结算
 		boolean isSucess = DingdanDao.updateComplete(dingdan);
 		// 审核成功后，使用选择的账户进行金额相减
@@ -60,5 +66,43 @@ public class FakuanshenheController extends ControllerBase {
 			writeJson(jsonObject.toString());
 		}
 	}
-
+	
+	//新增库存
+	private void saveKucun() {
+		Kucun kucun=new Kucun();
+		//获取yaopingID
+		int yaopingID=getParameterInt("yaopingID");
+		//获取dingdanID
+		int dingdanID = getParameterInt("dingdanID");
+		//获取cangkuId
+		int cangkuID=getParameterInt("cangkuID");
+		//根据库存ID获取库存实体信息
+		Kucun cunzaiKucun = KucunDao.findKucunByYaopingkuCunID(yaopingID, cangkuID);
+		//获取入库出库的药品数量
+		int shuliang = getParameterInt("shuliang");
+		//定义现在要更新库存的药品数量
+		int xianzaishuliang;
+		//如果库存存在
+		if(null!=cunzaiKucun && cunzaiKucun.getKucunID()>0) {
+			kucun.setKucunID(cunzaiKucun.getKucunID());
+			//入库，数量增加
+			xianzaishuliang = cunzaiKucun.getShuliang()+shuliang;
+			kucun.setShuliang(xianzaishuliang);
+		}else {
+			kucun.setShuliang(shuliang);
+		}
+		kucun.setYaopingID(getParameterInt("yaopingID"));
+		kucun.setCangKuID(getParameterInt("cangkuID"));
+		kucun.setDingdanID(dingdanID);
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		kucun.setRiqi(sdf.format(date));
+		kucun.setZhuangtai(1);//0未完成 1已完成
+		KucunDao.save(kucun);
+		Dingdan dingdan = new Dingdan();
+		dingdan.setDingdanID(dingdanID);
+		Dingdan temp = DingdanDao.findDingdanByPK(dingdan);
+		temp.setComplete(1);
+		DingdanDao.update(temp);
+	}
 }

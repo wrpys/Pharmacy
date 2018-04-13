@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.hzcc.webdemo.pojo.Dingdan;
 import edu.hzcc.webdemo.pojo.Kucun;
 import edu.hzcc.webdemo.pojo.KucunJisuang;
 import edu.hzcc.webdemo.sys.ProjectShare;
@@ -28,9 +29,50 @@ public class KucunDao {
 		if(kucun.getYaopingID() > 0) {
 			kucun.setYaoping(YaopingDao.findByYaopingID(kucun.getYaopingID()));
 		}
+		// 仓库详情
+		if (kucun.getCangKuID() > 0 ) {
+			kucun.setCangku(CangkuDao.findBycangkuID(kucun.getCangKuID()));
+		}
+		//库存详情
+		if (kucun.getDingdanID() > 0) {
+			Dingdan dingdan = new Dingdan();
+			dingdan.setDingdanID(kucun.getDingdanID());
+			kucun.setDingdan(DingdanDao.findDingdanByPK(dingdan));
+		}
 		return kucun;
 	}
 	
+	
+	
+	// 查找所有
+	public static List<Kucun> findALLKucun(){
+		try {
+			List<Kucun> list = new ArrayList<>();
+			//开启数据库链接
+			Connection connection = ProjectShare.getDbPool().getConnection();
+			
+			String sql = "select * from kucun where 1=1";
+			//返回数据库结果集
+			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
+			//循环结果集，一个个填充入List<Dingdan>
+			while(rs.next()){
+				//把结果集填入Dingdan对象
+				Kucun Kucun = converkucun(rs);
+				list.add(Kucun);
+			}
+			//结果集关闭
+			rs.close();
+			//数据量链接关闭
+			ProjectShare.getDbPool().closeConnection(connection);
+			
+			return list;
+			//异常
+		} catch (Exception e) {
+			// TODO: handle exception
+			ProjectShare.log("dingdan.findALL error: "+e.getMessage());
+			return null;
+		}
+	}
 	
 	/**
 	 * 
@@ -146,6 +188,33 @@ public class KucunDao {
 			Kucun kucun = new Kucun();
 			Connection connection = ProjectShare.getDbPool().getConnection();
 			String sql = "select * from kucun where kucunID='"+kucunID+"'";
+			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
+			while(rs.next()){
+				kucun = converkucun(rs);
+				
+			}
+			rs.close();
+			
+			ProjectShare.getDbPool().closeConnection(connection);
+			
+			return kucun;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			ProjectShare.log("kucun.findALL error: "+e.getMessage());
+			return null;
+		}
+	}
+	
+	
+	/*
+	 * 根据yaopingID,cangkuID,dingdanID获取库存
+	 */
+	public static Kucun findKucunByYaopingkuCunID(int yaopingID,int cangkuID){
+		try {
+			Kucun kucun = new Kucun();
+			Connection connection = ProjectShare.getDbPool().getConnection();
+			String sql = "select * from kucun where yaopingID='"+yaopingID+"' and cangkuID='" +cangkuID + "'";
 			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
 			while(rs.next()){
 				kucun = converkucun(rs);

@@ -74,7 +74,10 @@
                 <input type="hidden" name="cls" id="cls" value="FakuanshenheController"/>
                 <input type="hidden" name="mtd" id="mtd" value="update"/>
 				<input type="hidden" name="dingdanID" id="dingdanID"/>
+				<input type="hidden" name="yaopingID" id="yaopingID"/>
+				<input type="hidden" name="cangkuID" id="cangkuID"/>
 				<input type="hidden" name="zongjia" id="zongjia"/>
+				<input type="hidden" name="shuliang" id="shuliang"/>
                 <td><input type="text" name="dingdanBianhao" id="dialog-updateuser-formDingdanBianhao" readonly="readonly" value="" class="text ui-widget-content ui-corner-all"></td>
             </tr>
             <tr>
@@ -113,7 +116,10 @@
         <div class="hidden-sm hidden-xs action-buttons">
             <a class="green user-edit" href="#" data-id="{{dingdanID}}"
 												data-dingdanBianhao="{{dingdanBianhao}}"
+												data-yaopingID="{{yaopingID}}"
+												data-cangkuID="{{cangku.cangkuID}}"
 												data-zongjia="{{zongjia}}"
+												data-shuliang="{{shuliang}}"
 												data-complete="{{complete}}">
                 <i class="ace-icon fa fa-pencil bigger-100"></i>
             </a>
@@ -153,6 +159,7 @@ $(function () {
     }
 
     function renderUserListAndPage(result) {   
+    	console.log(result);
 		 var rendered = Mustache.render(userListTemplate, {"userList": result.caigoudingdanList,
 			 "bold": function () { // 对展示做特殊处理
                  return function (text, render) {
@@ -176,6 +183,9 @@ $(function () {
             var dingdanID = $(this).attr("data-id"); // 选中的id
 			var dingdanBianhao = $(this).attr("data-dingdanBianhao"); 
 			var zongjia = $(this).attr("data-zongjia"); 
+			var yaopingID = $(this).attr("data-yaopingID"); 
+			var cangkuID = $(this).attr("data-cangkuID"); 
+			var shuliang = $(this).attr("data-shuliang"); 
 			if(complete != "0") {
         		alert("该订单已经结算，无法再次结算！");
         		return ;
@@ -193,6 +203,9 @@ $(function () {
                    $("#zongjia").val(zongjia);
 				   $("#dialog-updateuser-formDingdanBianhao").val(dingdanBianhao);
 				   $("#dialog-updateuser-formcomplete").val(complete);
+				   $("#yaopingID").val(yaopingID);
+				   $("#cangkuID").val(cangkuID);
+				   $("#shuliang").val(shuliang);
                 },
                 buttons: {
                     "确认": function (e) {

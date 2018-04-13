@@ -41,6 +41,9 @@ public class Kucun {
 	
 	private Yaoping yaoping;
 	
+	private Cangku cangku;
+	
+	private Dingdan dingdan;
 	/*
 	 * 
 	 * 1入库
@@ -112,6 +115,20 @@ public class Kucun {
 	}
 	public void setDingdanID(int dingdanID) {
 		this.dingdanID = dingdanID;
+	}
+	
+	public Cangku getCangku() {
+		return cangku;
+	}
+	public void setCangku(Cangku cangku) {
+		this.cangku = cangku;
+	}
+	
+	public Dingdan getDingdan() {
+		return dingdan;
+	}
+	public void setDingdan(Dingdan dingdan) {
+		this.dingdan = dingdan;
 	}
 	@Override
 	public String toString() {
