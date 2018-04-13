@@ -186,7 +186,7 @@ $(function () {
     loadUserList();
     $(".user-add").click(function () {
         $("#dialog-saveuser-form").dialog({
-        	height: 420,
+        	height: 450,
         	width: 400,
             modal: true,
             title: "新增药品",
@@ -263,7 +263,7 @@ $(function () {
 			var yaopingBianhao = $(this).attr("data-yaopingBianhao");
 			var gongyingshangMingzi = $(this).attr("data-gongyingshangMingzi");
             $("#dialog-updateuser-form").dialog({
-            	height: 420,
+            	height: 450,
             	width: 400,
                 modal: true,
                 title: "编辑用户",

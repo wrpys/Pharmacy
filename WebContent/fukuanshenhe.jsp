@@ -81,7 +81,6 @@
                 <td style="width: 80px;"><label for="complete">结算</label></td>
                 <td>
 				<select id='dialog-updateuser-formcomplete' name="complete" style="width: 170px;">
-					<option value="0">未结算</option>
 					<option value="1">结算</option>
 				</select>
                 </td>
@@ -177,6 +176,10 @@ $(function () {
             var dingdanID = $(this).attr("data-id"); // 选中的id
 			var dingdanBianhao = $(this).attr("data-dingdanBianhao"); 
 			var zongjia = $(this).attr("data-zongjia"); 
+			if(complete != "0") {
+        		alert("该订单已经结算，无法再次结算！");
+        		return ;
+        	}
             $("#dialog-updateuser-form").dialog({
             	height: 250,
             	width: 450,
