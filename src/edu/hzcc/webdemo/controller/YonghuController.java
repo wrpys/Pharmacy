@@ -112,9 +112,6 @@ public class YonghuController extends ControllerBase {
 
 	// 系统退出
 	public void loginout() {
-		// 清除用户信息
-		loginyonghuID = 0;
-		logindengluMingzi = null;
 		// 日志
 		Rizhi rizhi = new Rizhi();
 		rizhi.setYonghuID(loginyonghuID);
@@ -126,6 +123,9 @@ public class YonghuController extends ControllerBase {
 		rizhi.setNeirong(logindengluMingzi + "退出");
 		// 保存日志
 		RizhiDao.save(rizhi);
+		// 清除用户信息
+		loginyonghuID = 0;
+		logindengluMingzi = null;
 		// 跳转登录页
 		toPage("login.jsp");
 		return;
