@@ -43,10 +43,10 @@ public class DBCPool {
 	 * 构造时候就初始化连接池对象
 	 */
 	public void init(){
-		System.out.println("init()");
 		if(dataSource != null)
 			return;
 		try {
+			System.out.println("init()");
 			if(dbProperties != null){
 				//直接使用配置对象构造ds
 				dataSource = (BasicDataSource)BasicDataSourceFactory.createDataSource(dbProperties);

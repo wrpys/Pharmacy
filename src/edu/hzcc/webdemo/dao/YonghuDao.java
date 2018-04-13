@@ -125,7 +125,7 @@ public class YonghuDao {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			ProjectShare.log("Drugs findByDrugsID error: "+e.getMessage());
+			ProjectShare.log("Yonghu findByYonghuID error: "+e.getMessage());
 			return null;
 		}
 	}

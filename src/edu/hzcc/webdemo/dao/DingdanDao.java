@@ -50,7 +50,7 @@ public class DingdanDao {
 		if (dingdan.getCangkuID() != null) {
 			dingdan.setCangku(CangkuDao.findBycangkuID(dingdan.getCangkuID()));
 		}
-		//库存详情
+		// 库存详情
 		if (dingdan.getDingdanID() != null) {
 			dingdan.setKucun(KucunDao.findKucunBydingdanID(dingdan.getDingdanID()));
 		}

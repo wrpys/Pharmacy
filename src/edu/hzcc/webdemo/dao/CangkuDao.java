@@ -120,7 +120,7 @@ public class CangkuDao {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			ProjectShare.log("cangku findByDrugsID error: " + e.getMessage());
+			ProjectShare.log("cangku findBycangkuID error: " + e.getMessage());
 			return null;
 		}
 	}

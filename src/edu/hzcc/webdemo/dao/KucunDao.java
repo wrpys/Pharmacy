@@ -33,12 +33,12 @@ public class KucunDao {
 		if (kucun.getCangKuID() > 0 ) {
 			kucun.setCangku(CangkuDao.findBycangkuID(kucun.getCangKuID()));
 		}
-		//库存详情
-		if (kucun.getDingdanID() > 0) {
-			Dingdan dingdan = new Dingdan();
-			dingdan.setDingdanID(kucun.getDingdanID());
-			kucun.setDingdan(DingdanDao.findDingdanByPK(dingdan));
-		}
+//		//库存详情
+//		if (kucun.getDingdanID() > 0) {
+//			Dingdan dingdan = new Dingdan();
+//			dingdan.setDingdanID(kucun.getDingdanID());
+//			kucun.setDingdan(DingdanDao.findDingdanByPK(dingdan));
+//		}
 		return kucun;
 	}
 	
