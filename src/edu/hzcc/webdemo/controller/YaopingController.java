@@ -99,6 +99,7 @@ public class YaopingController extends ControllerBase{
 		yaoping.setShuliang(getParameterInt("shuliang"));
 		yaoping.setGongyingshangMingzi(getParameter("gongyingshangMingzi"));
 		yaoping.setYaopingBianhao(getParameter("yaopingBianhao"));
+		yaoping.setCangkuID(getParameterInt("cangkuID"));
 		//调用yaopingDao的保存操作
 		YaopingDao.save(yaoping);
 	}
@@ -116,6 +117,7 @@ public class YaopingController extends ControllerBase{
 		yaoping.setGongyingshangMingzi(getParameter("gongyingshangMingzi"));
 		yaoping.setYaopingID(getParameterInt("yaopingID"));
 		yaoping.setYaopingBianhao(getParameter("yaopingBianhao"));
+		yaoping.setCangkuID(getParameterInt("cangkuID"));
 		//调用yaopingDao的修改操作
 		YaopingDao.update(yaoping);
 	}

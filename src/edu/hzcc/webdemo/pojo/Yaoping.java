@@ -38,6 +38,11 @@ public class Yaoping {
 	 * 该药品总数，为了预警用的
 	 */
 	private int shuliang;
+	
+	private Integer cangkuID; 
+	
+	private Cangku cangku;
+	
 	public int getYaopingID() {
 		return yaopingID;
 	}
@@ -85,6 +90,18 @@ public class Yaoping {
 	}
 	public void setShuliang(int shuliang) {
 		this.shuliang = shuliang;
+	}
+	public Integer getCangkuID() {
+		return cangkuID;
+	}
+	public void setCangkuID(Integer cangkuID) {
+		this.cangkuID = cangkuID;
+	}
+	public Cangku getCangku() {
+		return cangku;
+	}
+	public void setCangku(Cangku cangku) {
+		this.cangku = cangku;
 	}
 	@Override
 	public String toString() {
