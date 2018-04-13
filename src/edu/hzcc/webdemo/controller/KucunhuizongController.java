@@ -14,7 +14,9 @@ public class KucunhuizongController extends ControllerBase{
 	 */
 	public void findSum(){
 		System.out.println("kucunController.findSum()");
+		//创建kucunjisuan空列表
 		List<KucunJisuang> kucunSum=new ArrayList<>();
+		//查询库存总和
 		kucunSum=KucunDao.findSum();
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("kucunSum", kucunSum);

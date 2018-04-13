@@ -68,7 +68,6 @@ public class RukuandanDao {
 			return true;
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			ProjectShare.log("rukuandan.save/update error: "+e.getMessage());
 			return false;
 		}
@@ -85,7 +84,6 @@ public class RukuandanDao {
 			return false;
 			          
 		} catch (Exception e) {
-			// TODO: handle exception
 			ProjectShare.log("rukuandan.delete error: "+e.getMessage());
 			return false;
 		}

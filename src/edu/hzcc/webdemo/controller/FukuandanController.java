@@ -19,7 +19,9 @@ public class FukuandanController extends ControllerBase {
 
 	public void findAll() {
 		System.out.println("fukuandanDController.findAll()");
+		//创建fukuandan列表
 		List<Fukuandan> fukuandanList = new ArrayList<>();
+		//获取fukuandan列表
 		fukuandanList = FukuandanDao.findALL();
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("fukuandanList", fukuandanList);
@@ -30,6 +32,7 @@ public class FukuandanController extends ControllerBase {
 
 	public void save() {
 		System.out.println("fukuandanDController.save()");
+		//创建fukuandan空对象并设置数据
 		Fukuandan fukuandan = new Fukuandan();
 		fukuandan.setGongyingshangID(getParameterInt("gongyingshangID"));
 		fukuandan.setRiqi(getParameter("riqi"));
@@ -38,11 +41,13 @@ public class FukuandanController extends ControllerBase {
 		fukuandan.setBeizhi(getParameter("beizhi"));
 		fukuandan.setZhuangtai(getParameterInt("zhuangtai"));
 		fukuandan.setCaigoufahuoID(getParameterInt("caigoufahuoID"));
+		//调用dao保存对象入库
 		FukuandanDao.save(fukuandan);
 	}
 
 	public void update() {
 		System.out.println("fukuandanDController.save()");
+		//创建fukuandan空对象并设置数据
 		Fukuandan fukuandan = new Fukuandan();
 		fukuandan.setGongyingshangID(getParameterInt("gongyingshangID"));
 		fukuandan.setRiqi(getParameter("riqi"));

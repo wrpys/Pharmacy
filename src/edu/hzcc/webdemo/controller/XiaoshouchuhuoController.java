@@ -53,6 +53,7 @@ public class XiaoshouchuhuoController extends ControllerBase{
 		caigoudingdan.setDanjia(getParameterDouble("danjia"));
 		caigoudingdan.setShuliang(getParameterInt("shuliang"));
 		caigoudingdan.setZongjia(caigoudingdan.getDanjia() * caigoudingdan.getShuliang());
+		//创建时间对象，并用caigoudingdan进行格式转换
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		caigoudingdan.setRiqi(sdf.format(date));
@@ -75,6 +76,7 @@ public class XiaoshouchuhuoController extends ControllerBase{
 		caigoudingdan.setDanjia(getParameterDouble("danjia"));
 		caigoudingdan.setShuliang(getParameterInt("shuliang"));
 		caigoudingdan.setZongjia(caigoudingdan.getDanjia() * caigoudingdan.getShuliang());
+		//创建时间对象，并用caigoudingdan进行格式转换
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		caigoudingdan.setRiqi(sdf.format(date));

@@ -38,25 +38,32 @@ public class KucunDao {
 	 * @param cangkuID 
 	 * @return 数据少于预警设置数量的库存列表
 	 */
-//详细写一下？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+	//详细写一下？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？-->每一句注解我都写出来：主要是根据仓库ID和yaopingID获取库存中对应的信息
 	public static  Kucun findAllMinshuliang(int cangkuID, int yaopingID){
 		try {
+			//创建kucun实例
 			Kucun kucun = new Kucun();
+			//创建数据库链接
 			Connection connection = ProjectShare.getDbPool().getConnection();
+			//创建sql语句--->select * from kucun where kucunID=传进来的cangkuID and yaopingID = 传进来的yaopingID
 			String sql = "select * from kucun where kucunID='"+cangkuID+"'" + " and yaopingID=" + yaopingID;
+			//执行sql语句，并发挥resultset数据集
 			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
+			//遍历rs数据集中的对象
 			while(rs.next()){
+				//讲获取出来的数据设置到kucun对象中
 				kucun = converkucun(rs);
 				
 			}
+			//关闭rs对象流
 			rs.close();
-			
+			//关闭数据库链接对象
 			ProjectShare.getDbPool().closeConnection(connection);
-			
+			//返回库存信息
 			return kucun;
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			//如果执行错误，会执行到这里，并记录日志
 			ProjectShare.log("kucun.findALL error: "+e.getMessage());
 			return null;
 		}
@@ -204,114 +211,6 @@ public class KucunDao {
 		}
 	}
 
-	/*
-	 * 订单入出库明细
-	 */
-	// public static List<Kucun> findALLBydingdanhao(int dingdanhao){
-	// try {
-	// List<Kucun> list = new ArrayList<>();
-	// Connection connection = ProjectShare.getDbPool().getConnection();
-	// //下面这句话解释下？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-	// String sql =
-	// "select * from kucun where dingdanhao='"+dingdanhao+"' and zhuangtai in (1,2)";
-	// ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
-	// while(rs.next()){
-	// Kucun kucun = converkucun(rs);
-	// list.add(kucun);
-	//
-	// }
-	// rs.close();
-	//
-	// ProjectShare.getDbPool().closeConnection(connection);
-	//
-	// return list;
-	//
-	// } catch (Exception e) {
-	// // TODO: handle exception
-	// ProjectShare.log("kucun.findALL error: "+e.getMessage());
-	// return null;
-	// }
-	// }
-
-	// /*
-	// * 采购订单存余数
-	// */
-	// public static List<Kucun> findDetail(){
-	// try {
-	// List<Kucun> list = new ArrayList<>();
-	// Connection connection = ProjectShare.getDbPool().getConnection();
-	// //下面这句话解释下？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-	// String sql = "select * from kucun where zhuangtai='0' ";
-	// ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
-	// while(rs.next()){
-	// Kucun kucun = converkucun(rs);
-	// list.add(kucun);
-	//
-	// }
-	// rs.close();
-	//
-	// ProjectShare.getDbPool().closeConnection(connection);
-	//
-	// return list;
-	//
-	// } catch (Exception e) {
-	// // TODO: handle exception
-	// ProjectShare.log("kucun.findALL error: "+e.getMessage());
-	// return null;
-	// }
-	// }
-	/**
-	 * 
-	 * @return 数据少于预警设置数量的库存列表
-	 */
-	// 详细写一下？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-	public static List<KucunJisuang> findAllMinshuliang() {
-		try {
-			List<KucunJisuang> list = new ArrayList<>();
-			Connection connection = ProjectShare.getDbPool().getConnection();
-			// 获取药品的总数量小于设置的数量的所有药品ｉｄ
-			List<Integer> drugs = CangkusheziDao
-					.findZuishaoshuliangOfYaopingID();
-			// List<Integer> drugs是[1,2,3]这种格式，通过循环弄成（1，2，3）这个格式
-			String drusID = "(";
-			for (int i = 0; i < drugs.size(); i++) {
-				drusID += drugs.get(i);
-				drusID += ",";
-			}
-			// 以上生成（1，2，3,这个格式,下面这句是去掉逗号，变成（1，2，3
-			drusID = drusID.substring(0, drusID.length() - 1);
-			drusID += ")";
-			System.out.println(drusID);
-			// 下面这句话解释下？？？？？？？？？计算出药品ＩＤ，入库，出库，库存数
-			String sql = "SELECT ininven.yaopingID,ininven.yaopingMingzi,ininven.yaopingDanwei,ininven.ininvensum,outinven.outinvensum,ininven.ininvensum-outinven.outinvensum as inoutinven FROM "
-					+ "(SELECT kucun.yaopingID,kucun.yaopingMingzi,kucun.yaopingDanwei,SUM(kucun.shuliang) as ininvensum FROM kucun WHERE kucun.zhuangtai=1 group by kucun.yaopingID) as ininven "
-					+ "JOIN (SELECT kucun.yaopingID, SUM(kucun.shuliang)  as outinvensum FROM kucun WHERE kucun.zhuangtai=2 group by kucun.yaopingID) as outinven ON outinven.yaopingID=ininven.yaopingID"
-					+ " WHERE ininven.yaopingID IN  " + drusID;
-			ResultSet rs = ProjectShare.getDbPool().query(connection, sql);
-			while (rs.next()) {
-				KucunJisuang kucunSum = new KucunJisuang();
-				kucunSum.setYaopingID(rs.getInt("yaopingID"));
-				kucunSum.setYaopingMingzi(rs.getString("yaopingMingzi"));
-				kucunSum.setYaopingDanwei(rs.getString("yaopingDanwei"));
-				kucunSum.setZongruku(rs.getInt("ininvensum"));
-				kucunSum.setZongchuku(rs.getInt("outinvensum"));
-				kucunSum.setShengyushu(rs.getInt("inoutinven"));
-				list.add(kucunSum);
-
-			}
-			rs.close();
-
-			ProjectShare.getDbPool().closeConnection(connection);
-
-			return list;
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			ProjectShare.log("kucun.findALL error: " + e.getMessage());
-			return null;
-		}
-
-	}
 
 	/*
 	 * 汇总表

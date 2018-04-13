@@ -22,10 +22,15 @@ public class YonghuController extends ControllerBase {
 	// 查找所有操作人员
 	public void getAll() {
 		System.out.println("yonghuController.getALL()");
+		//创建Yonghu空列表实例
 		List<Yonghu> yonghuList = new ArrayList<>();
+		//查找所有honghu信息放到列表中
 		yonghuList = YonghuDao.findALL();
+		//创建json实例对象
 		JSONObject jsonObject = new JSONObject();
+		//将查询到的列表信息放到json对象中
 		jsonObject.put("yonghuList", yonghuList);
+		//将信息返回到前端去
 		writeJson(jsonObject.toString());
 		return;
 	}
