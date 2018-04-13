@@ -23,11 +23,7 @@
 			<div class="navbar-buttons navbar-header pull-right"
 				role="navigation">
 				<ul class="nav ace-nav">
-
-
-
 					<li class="divider"></li>
-
 				</ul>
 			</div>
 
@@ -61,7 +57,7 @@
 					</a> 
 					<b class="arrow"></b>
 				</li>
-				<li class="">
+				<li class="laoban xiaoshouyuan caiwu cangguanyuan">
 					<a href="#" class="dropdown-toggle"> 
 						<i class="menu-icon fa fa-desktop"></i> 
 						<span class="menu-text"> 采购管理 </span> 
@@ -83,7 +79,7 @@
 						</li>
 					</ul></li>
 
-				<li class=""><a href="#" class="dropdown-toggle"> <i
+				<li class="laoban caigourenyuan caiwu cangguanyuan"><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 							销售管理 </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
@@ -99,7 +95,7 @@
 						</a> <b class="arrow"></b></li>
 					</ul></li>
 
-				<li class=""><a href="" class="dropdown-toggle"> <i
+				<li class="laoban xiaoshouyuan caiwu caigourenyuan"><a href="" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 							库存管理 </span> <b class="arrow fa fa-angle-down"></b>
 				</a>
@@ -107,7 +103,7 @@
 					<ul class="submenu">
 						<li class=""><a class="popstyle" href="kucun.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
-								库存调拨单
+								库存查询
 						</a> <b class="arrow"></b></li>
 
 						<li class=""><a class="popstyle" href="cangkushezi.jsp"
@@ -121,7 +117,7 @@
 						</a> <b class="arrow"></b></li>
 					</ul></li>
 
-				<li class="nolook"><a href="#" class="dropdown-toggle"> <i
+				<li class="xiaoshouyuan cangguanyuan caigourenyuan"><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 							财务管理 </span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
@@ -140,50 +136,49 @@
 						</a> <b class="arrow"></b></li>
 					</ul></li>
 
-				<li class="nolook"><a href="#" class="dropdown-toggle"> <i
+				<li class="laoban caiwu"><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa menu-icon fa fa-flask "></i> <span
 						class="menu-text"> 基础信息</span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
 					<ul class="submenu">
-						<li class=""><a class="popstyle" href="kehu.jsp"
+						<li class="laoban caiwu cangguanyuan caigourenyuan"><a class="popstyle" href="kehu.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								客户管理
 
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="cangku.jsp"
+						<li class="laoban xiaoshouyuan caiwu caigourenyuan"><a class="popstyle" href="cangku.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								仓库管理
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="gongyingshang.jsp"
+						<li class="laoban xiaoshouyuan caiwu cangguanyuan"><a class="popstyle" href="gongyingshang.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								供应商管理
 						</a> <b class="arrow"></b></li>
 
-						<li class=""><a class="popstyle" href="yaoping.jsp"
+						<li class="laoban xiaoshouyuan caiwu cangguanyuan"><a class="popstyle" href="yaoping.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								药品管理
-
 						</a> <b class="arrow"></b></li>
 
 					</ul></li>
 				
-				<li class="nolook"><a href="#" class="dropdown-toggle"> <i
+				<li class="xiaoshouyuan caiwu caigourenyuan"><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa menu-icon fa fa-flask "></i> <span
 						class="menu-text"> 统计决策</span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>
 
 					<ul class="submenu">
-						<li class=""><a class="popstyle" href="caigouhuizongshenhe.jsp"
+						<li class="xiaoshouyuan caiwu cangguanyuan caigourenyuan"><a class="popstyle" href="caigouhuizongshenhe.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								采购汇总审核
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle" href="xiaoshouhuizongshenhe.jsp"
+						<li class="xiaoshouyuan caiwu cangguanyuan caigourenyuan"><a class="popstyle" href="xiaoshouhuizongshenhe.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								销售汇总审核
 						</a> <b class="arrow"></b></li>
 
-						<li class=""><a class="popstyle" href="kucunhuizong.jsp"
+						<li class="laoban xiaoshouyuan caiwu caigourenyuan"><a class="popstyle" href="kucunhuizong.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								仓库汇总表
 						</a> <b class="arrow"></b></li>
@@ -197,11 +192,11 @@
 
 					<ul class="submenu">
 
-						<li class=""><a class="popstyle nolook" href="rizi.jsp"
+						<li class="laoban"><a class="popstyle nolook" href="rizi.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								操作日志
 						</a> <b class="arrow"></b></li>
-						<li class=""><a class="popstyle nolook" href="yonghu.jsp"
+						<li class="xiaoshouyuan caiwu cangguanyuan caigourenyuan"><a class="popstyle nolook" href="yonghu.jsp"
 							target="_blank"> <i class="menu-icon fa fa-caret-right"></i>
 								操作人员
 						</a> <b class="arrow"></b></li>
@@ -302,6 +297,23 @@ $this 只是个变量名，加$是为说明其是个jquery对象。
  -->
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
+			// 权限控制
+			var url = location.search; //获取url中"?"符后的字串 ('?nolook=1') 
+			var str = url.substring(8);
+			// 0：老板，1：采购员，2：销售员，3：财务，4：仓管员
+			if(str == "0") {
+				$(".laoban").hide();
+			} else if(str == "1") {
+				$(".caigourenyuan").hide();
+			} else if(str == "2") {
+				$(".xiaoshouyuan").hide();
+			} else if(str == "3") {
+				$(".caiwu").hide();
+			} else if(str == "4") {
+				$(".cangguanyuan").hide();
+			}
+			
 			$(".popstyle").removeAttr("target");
 			$(".popstyle").each(function() {
 				var $this = $(this)
@@ -320,13 +332,6 @@ $this 只是个变量名，加$是为说明其是个jquery对象。
 				$("iframe").attr('src', $this.attr("data-value"));
 			});
 
-			// 权限控制
-			var url = location.search; //获取url中"?"符后的字串 ('?nolook=1') 
-			var str = url.substring(8);
-			if (str == 1) {
-				$(".nolook").hide();
-			}
-			
 			//退出，返回到YonghuController的loginout，完成日志，传到login.jsp
 			$(".login-out").click(function() {
 				var url = "${pageContext.request.contextPath }/cs";

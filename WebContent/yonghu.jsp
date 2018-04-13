@@ -60,7 +60,7 @@
 					<td style="width: 80px;"><label for="zhiwu">职务</label></td>
 					<td><select id="yonghuupdateyonghuZhiwu" name="zhiwu"
 						data-placeholder="选择职务" style="width: 170px;">
-							<option value="0">管理员</option>
+							<option value="0">老板</option>
 							<option value="1">采购员</option>
 							<option value="2">销售员</option>
 							<option value="3">财务</option>
@@ -104,7 +104,7 @@
 				<tr>
 					<td style="width: 80px;"><label for="zhiwu">职务</label></td>
 					<td><select id="deptSelectId" name="zhiwu" data-placeholder="选择职务" style="width: 170px;">
-							<option value="0">管理员</option>
+							<option value="0">老板</option>
 							<option value="1">采购员</option>
 							<option value="2">销售员</option>
 							<option value="3">财务</option>
